@@ -1,5 +1,7 @@
 'use strict';
 
+// Written by Catucod, Renato Jr. <3
+
 // App.js -- main javascript for all webpages
 
 function numchar(evt) {
