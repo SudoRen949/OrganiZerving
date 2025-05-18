@@ -159,8 +159,8 @@ var keys = {
 // Prevents unnecessary actions
 function lock() {
 	if (window.localStorage.getItem('user_username') === null) {
-		// if (window.location.href.indexOf('services') === -1) window.location.href = 'redirect/dontbypass.html';
-		// else window.location.href = '../redirect/dontbypass.html';
+		if (window.location.href.indexOf('services') === -1) window.location.href = 'redirect/dontbypass.html';
+		else window.location.href = '../redirect/dontbypass.html';
 	}
 }
 
