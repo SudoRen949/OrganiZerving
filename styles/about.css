@@ -1,0 +1,146 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+noscript {
+	font-size: 2vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1vw;
+	background: #BB0000;
+	color: #FFFFFF;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 2vw;
+	background: #1F1F29;
+	zoom: 0.8;
+}
+
+button {
+	font-size: 1.5vw;
+}
+
+img {
+	width: 50vw;
+}
+
+a {
+	text-decoration: none;
+}
+
+.maincontainer {
+	grid-template-areas:
+		'header'
+		'main'
+		'footer';
+	gap: 0.7vw;
+	display: grid;
+}
+
+.quicknav {
+	grid-area: header;
+	grid-template-areas: 'left right';
+	gap: 0.7vw;
+	display: grid;
+	background: #000000;
+	color: #FFFFFF;
+	padding: 1.46vw;
+	font-size: 1vw;
+	width: 100%;
+	border-bottom: solid gray;
+	filter: drop-shadow(0.14vw 0.3vw 0.44vw black);
+	z-index: 5;
+}
+
+.quicknav > .weblogo {
+	grid-area: left;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.quicknav > .quicknavbuttons {
+	gap: 1vw;
+	grid-area: right;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#loginbutton {
+	color: #FFFFFF;
+	border: none;
+	background: none;
+}
+
+#signupbutton {
+	color: #000000;
+	background: #63E973;
+}
+
+#loginbutton, #signupbutton {
+	padding: 1vw;
+	padding-left: 2.5vw;
+	padding-right: 2.5vw;
+	font-size: 1.5vw;
+	border-radius: 0.7vw;
+}
+
+#loginbutton:hover, #ba {
+	background: #1B1B1B;
+	cursor: pointer;
+}
+
+#signupbutton:hover {
+	background: #45944E;
+	cursor: pointer;
+}
+
+.abouttext {
+	grid-area: main;
+	color: #FFFFFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20vw;
+	padding-top: 1.8vw;
+	padding-bottom: 1vw;
+	text-align: center;
+	z-index: 5;
+}
+
+.buttons {
+	grid-area: footer;
+	display: flex;
+	padding: 1.8vw;
+	padding-top: 3vw;
+	justify-content: flex-start;
+	position: fixed;
+	bottom: 0;
+}
+
+.buttons a {
+	color: #FFFFFF;
+	padding: 2.5vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	border: solid white;
+	border-width: 0.15vw;
+	border-radius: 0.7vw;
+	z-index: 5;
+}
+
+.buttons a:hover {
+	background: #1B1B1B;
+	cursor: pointer;
+}
+
+.bg-img {
+	position: absolute;
+	z-index: 0;
+}

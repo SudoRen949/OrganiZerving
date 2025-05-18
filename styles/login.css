@@ -1,0 +1,239 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	background: #1F1F29;
+}
+
+noscript {
+	font-size: 2.5vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1vw;
+	background: #BB0000;
+	color: #FFFFFF;
+}
+
+body {
+	font-family: Sans-Serif;
+	font-size: 1vw;
+	zoom: 0.8;
+	/*position: fixed;*/
+	/*display: flex;*/
+	/*justify-content: center;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*align-content: center;*/
+	/*flex-direction: column;*/
+	color: white;
+}
+
+input {
+	background: #FFFFFF;
+	border: none;
+}
+
+.formater {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.maincontainer {
+	grid-template-areas:
+		'header'
+		'main'
+		'footer';
+	gap: 0.7vw;
+	color: #FFFFFF;
+	display: grid;
+}
+
+.maincontainer > .webtitle {
+	grid-area: header;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.9vw;
+	padding-bottom: 0.07vw;
+	font-size: 1.5vw;
+	text-align: center;
+}
+
+.maincontainer > .formcontainer {
+	grid-area: main;
+	grid-template-areas:
+		'header'
+		'main'
+		'footer';
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+}
+
+.formcontainer .loginform {
+	grid-template-areas:
+		'header'
+		'footer';
+	border: solid white 0.14vw;
+	border-radius: 1vw;
+	width: 40vw;
+	padding: 3vw;
+}
+
+.loginform > .forminputs {
+	grid-area: header;
+	grid-template-areas:
+		'header'
+		'footer';
+	font-size: 2vw;
+}
+
+.forminputs input {
+	height: 2.5vw;
+	border-radius: 0.5vw;
+	padding-left: 1vw;
+	font-size: 1.5vw;
+}
+
+.forminputs > .forminputsheader {
+	grid-area: header;
+	gap: 1vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-content: center;
+}
+
+#formtitle {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-size: 2.5vw;
+}
+
+.loginform > .formbutton {
+	grid-area: footer;
+	grid-template-areas: 'left main right';
+	display: flex;
+	justify-content: space-between;
+	padding-top: 1.5vw;
+	align-items: center;
+}
+
+.formbutton #loginbutton {
+	border: none;
+	border-radius: 0.5vw;
+	color: #000000;
+	padding: 2vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	background: #63E973;
+	font-size: 1.5vw;
+}
+
+.formbutton #backbutton {
+	border: none;
+	border-radius: 0.5vw;
+	color: #FFFFFF;
+	padding: 2vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	background: none;
+	font-size: 1.5vw;
+}
+
+.formbutton #emptybutton {
+	background: none;
+	border: none;
+	border-radius: 0.5vw;
+	color: transparent;
+	padding: 1.5vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	font-size: 1.5vw;
+	user-select: none;
+}
+
+.forminputs > .forminputsfooter {
+	grid-area: footer;
+	gap: 0.5vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	font-size: 1.5vw;
+	align-items: center;
+	padding-top: 1vw;
+}
+
+.forminputsfooter input {
+	width: 1.5vw;
+}
+
+.formbutton > .backbuttoncontainer {
+	grid-area: left;
+	gap: 0.5vw;
+	display: flex;
+}
+
+.formbutton > .loginbuttoncontainer {
+	grid-area: main;
+	gap: 0.5vw;
+}
+
+#loginbutton:hover {
+	background: #45944E;
+	cursor: pointer;
+}
+
+#backbutton:hover {
+	background: #555555;
+	cursor: pointer;
+}
+
+#backbutton {
+	text-decoration: none;
+}
+
+.formcontainer > .forgotpasswordlink {
+	grid-area: footer;
+	gap: 1vw;
+	display: flex;
+	flex-direction: column;
+	padding-top: 2.5vw;
+	padding-bottom: 5vw;
+	font-size: 1.5vw;
+}
+
+.forgotpasswordlink a {
+	text-decoration: none;
+}
+
+.forgotpasswordlink a:hover {
+	text-decoration: underline;
+}
+
+#usererror, #passworderror {
+	/*visibility: hidden;*/
+	/*position: absolute;*/
+	font-size: 1.5vw;
+	padding-bottom: 1.5vw;
+	color: red;
+}
+
+.offlinemsg {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	width: 100%;
+}

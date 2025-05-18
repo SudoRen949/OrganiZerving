@@ -1,0 +1,242 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	background: #1F1F29;
+}
+
+noscript {
+	font-size: 2.5vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1vw;
+	background: #BB0000;
+	color: #FFFFFF;
+}
+
+body {
+	color: white;
+	font-size: 1.5vw;
+	font-family: Sans-Serif;
+	zoom: 0.8;
+}
+
+input {
+	background: #FFFFFF;
+	border: none;
+}
+
+select {
+	background: #FFFFFF;
+	border: none;
+}
+
+option {
+	background: #FFFFFF;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.formater {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+
+.maincontainer {
+	grid-template-areas:
+		'header'
+		'main'
+		'footer';
+	/*gap: 0.7vw;*/
+	display: grid;
+}
+
+.maincontainer > .titlearea {
+	grid-area: header;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	/*padding: 1.9vw;*/
+	/*padding-bottom: 0.7vw;*/
+	font-size: 1.5vw;
+	text-align: center;
+	/*margin-top: 0.14vw;*/
+	margin-bottom: 1.5vw;
+}
+
+.maincontainer > .formcontainer {
+	grid-area: main;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	align-content: center;
+	/*margin-bottom: 3.7vw;*/
+}
+
+.formcontainer > .formarea {
+	grid-area: footer;
+	grid-template-areas:
+		'header'
+		'footer';
+	gap: 0.7vw;
+	width: 35vw;
+	border: solid #FFFFFF 0.14vw;
+	border-radius: 1vw;
+	padding: 3vw;
+}
+
+.formarea > .inputarea {
+	grid-area: header;
+	gap: 0.3vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-size: 1.4vw;
+}
+
+.inputarea h1 {
+	font-size: 2vw;
+	text-align: center;
+	padding-bottom: 2vw;
+}
+
+.inputarea input {
+	height: 2.5vw;
+	margin-bottom: 1vw;
+	border-radius: 0.5vw;
+	padding-left: 1vw;
+	font-size: 1.5vw;
+}
+
+.formarea > .buttonarea {
+	grid-area: footer;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 2vw;
+}
+
+#nextbutton, #backbutton {
+	border: none;
+	background: #63E973;
+	color: #000000;
+	padding: 2vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	border-radius: 0.7vw;
+	font-size: 1.2vw;
+}
+
+#nextbutton:hover, #backbutton:hover {
+	background: #45944E;
+	cursor: pointer;
+}
+
+#genderoptions {
+	gap: 1vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+	align-items: center;
+}
+
+#genderoptions input {
+	margin-top: 1vw;
+	width: 1.5vw;
+}
+
+/* Input area 2 style */
+
+.formarea > .inputarea2 {
+	grid-area: header;
+	gap: 0.5vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-size: 1.4vw;
+}
+
+.inputarea2 h1 {
+	font-size: 2vw;
+	text-align: center;
+	padding-bottom: 2vw;
+}
+
+.inputarea2 input {
+	height: 2.5vw;
+	border-radius: 0.5vw;
+	padding-left: 1vw;
+	font-size: 1.5vw;
+}
+
+.inputarea2 select {
+	height: 2.5vw;
+	margin-bottom: 1vw;
+	border-radius: 0.5vw;
+	padding-left: 1vw;
+	font-size: 1.5vw;
+}
+
+.inputarea2 .showpassdiv {
+	gap: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+}
+
+.inputarea2 .showpassdiv input {
+	width: 1.5vw;
+}
+
+/*.inputarea2 #passwordinput,*/
+/*.inputarea2 #password2input {*/
+/*	letter-spacing: 5px;*/
+/*}*/
+
+/* Input area 3 style */
+
+.formarea > .inputarea3 {
+	grid-area: header;
+	gap: 0.3vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-size: 1.4vw;
+}
+
+.inputarea3 h1 {
+	font-size: 2vw;
+	text-align: center;
+	padding-bottom: 2vw;
+}
+
+.inputarea3 input {
+	height: 2.5vw;
+	margin-bottom: 1vw;
+	border-radius: 0.5vw;
+	padding-left: 1vw;
+	font-size: 1.5vw;
+}
+
+.inputarea3 select {
+	height: 2.5vw;
+	margin-bottom: 1vw;
+	border-radius: 0.5vw;
+	padding-left: 1vw;
+	font-size: 1.5vw;
+}
+

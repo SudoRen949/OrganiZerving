@@ -1,0 +1,365 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	background: #1F1F29;
+	color: #FFFFFF;
+	user-select: none;
+}
+
+noscript {
+	font-size: 2vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1vw;
+	background: #BB0000;
+	color: #FFFFFF;
+}
+
+body {
+	font-family: Sans-Serif;
+	font-size: 1vw;
+	zoom: 0.85;
+}
+
+.maincontainer {
+	gap: 0.7vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.taskbar, .taskbar h1, .taskbar span,
+.profilecontainer, .profilecontainer h3,
+.profilecontainer button {
+	background: #000000;
+}
+
+.taskbar {
+	display: flex;
+	padding: 1vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: solid #CCCCCC 0.07vw;
+	margin-bottom: 3.5vw;
+	filter: drop-shadow(0.15vw 0.3vw 0.44vw black);
+}
+
+.profilecontainer button {
+	gap: 0.7vw;
+	border: solid #000000 0.07vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.15vw;
+	padding-left: 0.37vw;
+	padding-right: 0.37vw;
+}
+
+.profilecontainer button:hover {
+	cursor: pointer;
+	background: #5A5A5A;
+}
+
+.profilecontainer .profilebutton {
+	gap: 0.7vw;
+	border: solid #000000 0.07vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: black;
+}
+
+.profilecontainer button * {
+	background: none;
+}
+
+.profilecontainer button h3 {
+	font-size: 1.5vw;
+}
+
+.profilecontainer img {
+	width: 3.5vw;
+	margin-right: 0.7vw;
+	border-radius: 5vw;
+}
+
+.servicesgroup {
+	gap: 2vw;
+	display: flex;
+	padding-left: 17vw;
+	padding-right: 17vw;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	margin-bottom: 0.7vw;
+	margin-top: 1vw;
+}
+
+.servicesgroup * {
+	background: none;
+	font-size: 1.5vw;
+}
+
+.servicecontainer {
+	gap: 1.5vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	border: solid #FFFFFF 0.15vw;
+	border-radius: 0.7vw;
+	padding: 2vw;
+	text-align: center;
+}
+
+.servicecontainer:hover {
+	cursor: pointer;
+	transition: all 300ms ease-in-out;
+	transform: scale(1.10);
+}
+
+.servicecontainer h2 {
+	color: lightgreen;
+}
+
+/* Floating Menu style */
+
+.menucontainer {
+	position: fixed;
+	backdrop-filter: blur(0.07vw);
+	width: 100%;
+	height: 100%;
+	background: none;
+	display: flex;
+	justify-content: flex-end;
+	z-index: 2;
+}
+
+.menu {
+	background: #000000;
+	border-left: solid gray 0.07vw;
+	width: 35%;
+	height: 100%;
+	padding: 2.57vw;
+	display: flex;
+	flex-direction: column;
+	transform: translateX(100vw);
+}
+
+.menu * {
+	background: none;
+}
+
+.backarrowbtn {
+	display: flex;
+	padding: 0.07vw;
+	font-size: 2.5vw;
+	border: none;
+	padding-bottom: 0.35vw;
+}
+
+.backarrowbtn:hover {
+	background: #555555;
+	cursor: pointer;
+}
+
+.menuheader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+}
+
+.menuheader img {
+	width: 5.5vw;
+	border-radius: 10vw;
+}
+
+.menuheader #username2 {
+	font-size: 1.5vw;
+}
+
+.menubody {
+	gap: 1.5vw;
+	display: flex;
+	flex-direction: column;
+	padding-top: 1.8vw;
+}
+
+.btn1, .btn2, .btn3 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 1.5vw;
+	border: solid #000000 0.15vw;
+	border: none;
+	font-size: 1.5vw;
+	text-decoration: none;
+}
+
+.btn1:hover, .btn2:hover, .btn3:hover {
+	background: #555555;
+	cursor: pointer;
+}
+
+.menufooter {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	height: 100%;
+}
+
+.menufooter button {
+	border: none;
+	background: #FF0000;
+	border-radius: 1vw;
+	padding: 1.5vw;
+	font-size: 1.5vw;
+}
+
+.menufooter button:hover {
+	background: #9A0000;
+	cursor: pointer;
+}
+
+.faqcontainer {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #1F1F29;
+	z-index: 3;
+	zoom: 0.85;
+}
+
+.faqcontainer .fcquicknav {
+	gap: 27vw;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding: 2vw;
+	width: 100%;
+	border-bottom: solid white 0.07vw;
+	align-items: center;
+}
+
+.faqcontainer .fcquicknav button {
+	font-size: 1.5vw;
+	border: none;
+	background: #63E973;
+	border-radius: 0.35vw;
+	color: black;
+	padding: 1vw;
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+}
+
+.faqcontainer .fcquicknav button:hover {
+	cursor: pointer;
+	background: #45944E;
+}
+
+.faqcontainer .faqsection {
+	display: flex;
+	/*flex-direction: column;*/
+	/*justify-content: flex-start;*/
+	justify-content: center;
+	padding-top: 8vw;
+	height: 100%;
+	align-items: center;
+	padding-left: 30vw;
+	padding-right: 30vw;
+	/*padding-bottom: 7vw;*/
+	/*overflow: scroll;*/
+}
+
+.faqsection img {
+	height: 10%;
+}
+
+.baloon {
+	visibility: hidden;
+	position: absolute;
+	background: none;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	bottom: 2vw;
+	right: 2vw;
+	z-index: 1;
+}
+
+.baloon .mainbtn:hover {
+	background: rgba(70,70,70,1);
+	cursor: pointer;
+}
+
+.baloon .mainbtn {
+	border: solid white 0.07vw;
+	border-radius: 7vw;
+	padding: 1.5vw;
+}
+
+.baloon .items {
+	gap: 0.7vw;
+	display: flex;
+	flex-direction: column;
+	visibility: hidden;
+	position: absolute;
+	transform: translate(-5vw,-15.7vw);
+	width: 17vw;
+	height: 14.7vw;
+	border: solid white 0.07vw;
+	border-radius: 0.7vw;
+	padding: 0.7vw;
+}
+
+.baloon .items button {
+	border: none;
+	font-size: 1.5vw;
+	text-align: center;
+	width:100%;
+	padding: 1vw;
+}
+
+.baloon .items button:hover {
+	background: rgba(70,70,70,1);
+	color: lightgreen;
+	cursor: pointer;
+}
+
+.fcquicknav .faqtitle {
+	display: flex;
+	width: 100%;
+	position: inherit;
+	z-index: -1;
+	justify-content: center;
+	transform: translateX(-1.8vw);
+}
+
+.description {
+	/*grid-area: 3 / 1 / span 1 / span 4;*/
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	margin-top: 9vw;
+	font-size: 1.75vw;
+}
+
+.servicetitle {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	font-size: 2vw;
+	margin-bottom: 2.5vw;
+}
+
