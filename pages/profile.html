@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OrganiZerving</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../styles/profile.css">
+		<link rel="icon" type="image/png" href="../images/favicon_testing.png">
+		<script type="text/javascript" src="../scripts/app.js"></script>
+	</head>
+	<body id="pfbdy">
+		<noscript>Please enable Javascript!<br><span style="background: #BB0000; font-size: 2.5vw;">Go to Settings > Privacy and Security > Javascript</span></noscript>
+		<main class="main1">
+			<div class="div1">
+				<h2>Organi<span style="color: blue;">Zerving</span></h2>
+				<h2>Account Setting</h2>
+				<button type="button" onclick="profile_home()">Home</button>
+			</div>
+			<hr>
+			<div class="div2">
+				<div class="div3">
+					<button id="btn1" type="button" onclick="profile_generalbutton()">General</button>
+					<button id="btn2" type="button" onclick="profile_requestsbutton()">Requests</button>
+					<button id="btn3" type="button" onclick="profile_eventjoinedbutton()">Events joined</button>
+					<button id="btn4" type="button" onclick="profile_securitybutton()">Security</button>
+				</div>
+				<div class="div4" id="div4">
+					<div class="div4_1">
+						<div class="div4_1_10"><img id="userprofile" alt="userprofile" src="../images/userprofiles/uprofile.png" onclick="profile_imagebutton()" title="Click to change photo"></div>
+						<div class="div4_1_1">
+							<label for="input1">Name</label>
+							<input id="input1" type="text">
+						</div>
+						<div class="div4_1_2">
+							<label for="input2">Age</label>
+							<input id="input2" type="text">
+						</div>
+						<div class="div4_1_3">
+							<label for="div4_1_3_1">Gender</label>
+							<div class="div4_1_3_1" id="div4_1_3_1">
+								<input id="input3" type="radio" name="gender" value="male">
+								<label for="input3">Male</label>
+								<input id="input4" type="radio" name="gender" value="female">
+								<label for="input4">Female</label>
+							</div>
+						</div>
+						<div class="div4_1_4">
+							<label for="select1">Status</label>
+							<select id="select1">
+								<option>Single</option>
+								<option>In a relationship</option>
+								<option>Its complicated</option>
+								<option>Married</option>
+							</select>
+						</div>
+						<div class="div4_1_5">
+							<label for="input5">Email</label>
+							<input id="input5" type="text">
+						</div>
+						<div class="div4_1_6">
+							<label for="input6">Contact # (+63)</label>
+							<input id="input6" type="text">
+						</div>
+						<div class="div4_1_7">
+							<label for="input7">ID Number</label>
+							<input id="input7" type="text">
+						</div>
+						<div class="div4_1_8">
+							<label for="select2">Department</label>
+							<select id="select2">
+								<option>CEA</option>
+								<option>CITC</option>
+								<option>CSM</option>
+								<option>COT</option>
+							</select>
+						</div>
+						<div class="div4_1_9">
+							<label for="select3">Role</label>
+							<select id="select3" disabled>
+								<option>Student</option>
+								<option>Org. Officer</option>
+								<option>Admin</option>
+							</select>
+						</div>
+					</div>
+					<div class="div4_2">
+						<div class="div4_2_1">
+							<h5>Profile image must be at least 256x256 in size</h5>
+						</div>
+						<button id="delete" type="button" onclick="profile_deletebutton()">Delete Account</button>
+						<button	type="button" onclick="profile_savebutton()">Save changes</button>
+					</div>
+				</div>
+				<div class="div5" id="div5">
+					<div class="div5_1">
+						<!--<img src="https://media.tenor.com/2BLI5EO7yVAAAAAj/loading-image.gif" alt="loading">-->
+						<!--<h4 style="visibility: hidden; position: absolute;"><i>You don't have any requests.</i></h4>-->
+						<h3>Your requests</h3>
+					</div>
+				</div>
+				<div class="div6" id="div6">
+					<div class="div6_1">
+						<img src="https://media.tenor.com/2BLI5EO7yVAAAAAj/loading-image.gif" alt="loading">
+						<h4 style="visibility: hidden; position: absolute;"><i>No events listed.</i></h4>
+					</div>
+				</div>
+				<div class="div7" id="div7">
+					<div class="div7_1">
+						<div class="div7_1_1">
+							<label for="passinput">Current password</label>
+							<input id="passinput" type="password" disabled>
+						</div>
+						<div class="div7_1_2">
+							<label for="acctoken">Account Token</label>
+							<input id="acctoken" type="text" disabled>
+						</div>
+						<div class="div7_1_3">
+							<input id="showpass" type="checkbox" onclick="profile_showpassword()">
+							<label for="showpass">Show Password</label>
+						</div>
+					</div>
+					<div class="div7_2">
+						<button type="button" onclick="profile_changepasswordbutton()">Change Password</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

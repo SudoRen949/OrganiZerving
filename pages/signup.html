@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<title>OrganiZerving</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../styles/signup.css">
+		<link rel="icon" type="image/png" href="../images/favicon_testing.png">
+		<script type="text/javascript" src="../scripts/app.js"></script>
+	</head>
+	<body>
+		<noscript>Please enable Javascript!<br><span style="background: #BB0000; font-size: 2.5vw;">Go to Settings > Privacy and Security > Javascript</span></noscript>
+		<div class="formater">
+			<main class="maincontainer">
+				<div class="titlearea"><h1>Organi<span style="color: blue;">Zerving</span></h1></div>
+				<div class="formcontainer">
+					<div class="formarea" id="formarea">
+						<div class="inputarea" id="inputarea" style="visibility: visible;">
+							<h1>Create account</h1>
+							<label for="fullnameinput">Full Name</label>
+							<input id="fullnameinput" type="text">
+							<label for="usernameinput">Username</label>
+							<input id="usernameinput" type="text">
+							<label for="emailinput">Email</label>
+							<input id="emailinput" type="text">
+							<label for="contactinput">Contact Number (Optional)</label>
+							<input id="contactinput" type="text" onkeypress="return numchar(event)">
+							<label for="genderoptions">Gender</label>
+							<div id="genderoptions">
+								<input id="male" type="radio" name="genderopt" value="M" checked>
+								<label for="male">Male</label>
+								<input id="female" type="radio" name="genderopt" value="V">
+								<label for="female">Female</label>
+							</div>
+						</div>
+						<div class="inputarea2" id="inputarea2" style="visibility: hidden; position: absolute;">
+							<h1>Create account</h1>
+							<label for="passwordinput">Password</label>
+							<input id="passwordinput" type="password" maxlength="24">
+							<div class="err1" id="err1" style="visibility: hidden; position: absolute; margin-bottom: 20px; color: red;">
+								<h4>Password must have:<br> - at least 8 characters long,<br> - 1 capital letter,<br> - 1 special character like "@"</h4>
+							</div>
+							<label for="password2input">Confirm Password</label>
+							<input id="password2input" type="password" maxlength="24">
+							<div class="err2" id="err2" style="visibility: hidden; position: absolute; margin-bottom: 15px; color: red;">
+								<h4>Password does not match.</h4>
+							</div>
+							<div class="showpassdiv">
+								<input id="showpass" type="checkbox" onclick="signup_showpassword()">
+								<label for="showpass">Show Password?</label>
+							</div>
+						</div>
+						<div class="inputarea3" id="inputarea3" style="visibility: hidden; position: absolute;">
+							<h1>Create account</h1>
+							<label for="dept">College Department</label>
+							<select id="dept">
+								<option></option>
+								<option>CEA</option>
+								<option>CITC</option>
+								<option>CSM</option>
+								<option>COT</option>
+							</select>
+							<label for="scid">ID Number</label>
+							<input id="scid" type="text" onkeypress="return numchar(event)" maxlength="10">
+							<div id="err3" style="visibility: hidden; position: absolute; margin-bottom: 15px; color: red; margin-top: -10px;">
+								<h4>Invalid ID number</h4>
+							</div>
+							<label for="role">Role</label>
+							<select id="role">
+								<option></option>
+								<option>Student</option>
+								<option>Org. Officer</option>
+							</select>
+						</div>
+						<div class="buttonarea">
+							<button type="button" id="backbutton" onclick="signup_backbutton()">< Back</button>
+							<p id="counter">1/3</p>
+							<button type="button" id="nextbutton" onclick="signup_nextbutton()">Next ></button>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

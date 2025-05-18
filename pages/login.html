@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OrganiZerving</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../styles/login.css">
+		<link rel="icon" type="image/png" href="../images/favicon_testing.png">
+		<script type="text/javascript" src="../scripts/app.js"></script>
+	</head>
+	<body>
+		<noscript>Please enable Javascript!<br><span style="background: #BB0000; font-size: 2.5vw;">Go to Settings > Privacy and Security > Javascript</span></noscript>
+		<div class="offlinemsg" style="visibility: visible; position: absolute;"><p>You're offline, please connect to the internet.</p></div>
+		<div class="formater">
+			<main class="maincontainer">
+				<div class="webtitle">
+					<h1>Organi<span style="color: blue;">Zerving</span><br><br></h1>
+				</div>
+				<div class="formcontainer">
+					<div class="loginform">
+						<div class="forminputs">
+							<div class="forminputsheader">
+								<h1 id="formtitle">Log in</h1>
+								Username <input id="inputusername" type="username" maxlength="256">
+								<p id="usererror" style="visibility: hidden; position: absolute;">User not found, please create an account.</p>
+								Password <input id="inputpassword" type="password">
+								<p id="passworderror" style="visibility: hidden; position: absolute;">Wrong password.</p>
+							</div>
+							<div class="forminputsfooter">
+								<input type="checkbox" onclick="login_showpassword()">Show password
+							</div>
+						</div>
+						<div class="formbutton">
+							<div class="backbuttoncontainer">
+								<button id="backbutton" type="button" onclick="login_backbutton()">Back</button>
+							</div>
+							<div class="submitbuttoncontainer">
+								<button id="loginbutton" type="button" onclick="login_loginbutton()">Log in</button>
+							</div>
+							<div class="emptybuttoncontainer">
+								<button id="emptybutton" type="button">Empty</button>
+							</div>
+						</div>
+					</div>
+					<div class="forgotpasswordlink">
+						<a href="redirect/forgot.html" style="color: #63E973;">Forgot password?</a>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

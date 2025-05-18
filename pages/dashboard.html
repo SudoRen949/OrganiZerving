@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OrganiZerving</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../styles/dashboard.css">
+		<link rel="icon" type="image/png" href="../images/favicon_testing.png">
+		<script type="text/javascript" src="../scripts/app.js"></script>
+	</head>
+	<body id="dhbdy">
+		<noscript>Please enable Javascript!<br><span style="background: #BB0000; font-size: 2.5vw;">Go to Settings > Privacy and Security > Javascript</span></noscript>
+		<main id="maincontainer" class="maincontainer">
+			<div class="taskbar">
+				<h1>Organi<span style="color: blue;">Zerving</span></h1>
+				<div class="profilecontainer">
+					<div class="profilebutton">
+						<img id="userprofile" alt='user_profile' src="../images/userprofiles/uprofile.png">
+						<h3 id="username">Username</h3>
+						<button type="button" onclick="dashboard_menubutton()">
+							<h2 style="font-size: 3vw; margin-left: 0.5vw; margin-right: 0.5vw;"><b>&equiv;</b></h2>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="servicetitle">
+				<h4>Services</h4>
+			</div>
+			<div class="servicesgroup" id="servicesgroup">
+				<div class="servicecontainer" onclick="dashboard_eventbutton()" onmouseover="dashboard_showdescription1()" onmouseout="dashboard_showdescription1()">
+					<img alt="event_tracker_icon" src="../images/icons/event_icon.png" style="filter: invert(100%); width: 6vw; margin-bottom: 20px;">
+					<h2>&nbsp;&nbsp;Event Tracker&nbsp;&nbsp;</h2>
+				</div>
+				<div class="servicecontainer" onclick="dashboard_requestbutton()" onmouseover="dashboard_showdescription2()" onmouseout="dashboard_showdescription2()">
+					<img alt="request_icon" src="../images/icons/request_icon.png" style="filter: invert(100%); width: 6vw; margin-bottom: 20px;">
+					<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+				</div>
+				<div class="servicecontainer" onclick="dashboard_calendarbutton()" onmouseover="dashboard_showdescription3()" onmouseout="dashboard_showdescription3()">
+					<img alt="calendar_icon" src="../images/icons/calendar_icon.png" style="filter: invert(100%); width: 6vw; margin-bottom: 20px;">
+					<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Calendar&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+				</div>
+				<div class="servicecontainer" onclick="dashboard_mapbutton()" onmouseover="dashboard_showdescription4()" onmouseout="dashboard_showdescription4()">
+					<img alt="map_icon" src="../images/icons/map_icon.png" style="filter: invert(100%); width: 6vw; margin-bottom: 20px;">
+					<h2>&nbsp;&nbsp;&nbsp;&nbsp;Campus Map&nbsp;&nbsp;&nbsp;</h2>
+				</div>
+			</div>
+			<div class="description">
+				<p id="desc1" style="visibility: hidden; position: absolute;">Shows the list of university events.</p>
+				<p id="desc2" style="visibility: hidden; position: absolute;">File a request</p>
+				<p id="desc3" style="visibility: hidden; position: absolute;">Download university calendar</p>
+				<p id="desc4" style="visibility: hidden; position: absolute;">Download campus map</p>
+			</div>
+			<div class="menucontainer" id="menucontainer" style="visibility: hidden;">
+				<!-- Shows only when the user pressed its profile menu -->
+				<div class="menu" id="menu">
+					<div class="menuheader">
+						<button class="backarrowbtn" type="button" onclick="dashboard_menubutton()"><h2>&larr;</h2></button>
+						<h2 id="username2">Username ( Student )</h2>
+						<img id="userprofile2" alt='user_profile' src="../images/userprofiles/uprofile.png">
+					</div>
+					<div class="menubody">
+						<hr>
+						<a class="btn1" href="profile.html">Account Settings</a>
+						<a class="btn2" onclick="dashboard_faqbutton()">FAQs</a>
+						<a class="btn3" href="redirect/reachus.html">Contact Us</a>
+					</div>
+					<div class="menufooter">
+						<button class="logoutbtn" onclick="dashboard_logoutbutton()">Log out</button>
+					</div>
+				</div>
+			</div>
+			<div class="faqcontainer" id="faqcontainer" style="visibility: hidden;">
+				<div class="fcquicknav">
+					<button type="button" onclick="dashboard_faqbutton()">Back</button>
+					<div class="faqtitle">
+						<h1>Frequently Asked Questions</h1>
+					</div>
+				</div>
+				<div id="faqsection" class="faqsection">
+					<img id="loadingimg" src="https://media.tenor.com/2BLI5EO7yVAAAAAj/loading-image.gif" alt="loading_gif" style="visibility: hidden; position: absolute;">
+					<h3 id="faqmessage" style="visibility: hidden; position: absolute;"><i>No FAQs available.</i></h3>
+					<!--<div class="faqbox" id="faqbox" style="margin-top: 4vw;">-->
+					<!--	<h1>Q1: Sample Question?<br><br></h1>-->
+					<!--	<h2>Answer: Sample Answer asdkjasdhaskjdhaskjhdkjashdkashdkhaskhdkjh<br>asjdhaskjhdkahsdkh</h2>-->
+					<!--</div>-->
+				</div>
+			</div>
+			<div class="baloon" id="baloon">
+				<button class="mainbtn" type="button" onclick="dashboard_toolsbutton()" title="Tools">
+					<img alt="tools" src="../images/icons/tools.png" style="filter: invert(100%); width: 2vw; background: none;">
+				</button>
+				<div class="items" id="items">
+					<button type="button" onclick="dashboard_posteventbutton()">Post event</button>
+					<button type="button" onclick="dashboard_managerequestsbutton()">Manage Requests</button>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
