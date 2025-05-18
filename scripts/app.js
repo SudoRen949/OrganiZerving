@@ -147,7 +147,10 @@ var endpoints = {
 	eventdata: 'https://api.sheetson.com/v2/sheets/Sheet2',
 	requestdata: 'https://api.sheetson.com/v2/sheets/Sheet3',
 	faqdata: 'https://api.sheetson.com/v2/sheets/Sheet4',
-	imagedata: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/upload',
+	imagedata: {
+		upload: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/upload',
+		delete: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/destroy'
+	},
 };
 
 var keys = {
@@ -697,12 +700,12 @@ function profile_savebutton() { // save changes
 
 function profile_imagebutton() { // profile pic
 	if (window.localStorage.getItem('user_username') === null) return;
-	var upload_image = () => {
+	var upload_image = (event) => {
 		// upload image to server
 		const form = new FormData();
 		form.append('file',event.target.files[0]);
 		form.append('upload_preset','oz_unsigned_preset');
-		const url = endpoints.imagedata;
+		const url = endpoints.imagedata.upload;
 		//
 		fetch(url,{
 			method: 'POST',
@@ -711,7 +714,7 @@ function profile_imagebutton() { // profile pic
 		.then(res => res.json())
 		.then(data => {
 			// console.log(data);
-			window.localStorage.setItem('profile_image_public_id',data.public_id);
+			window.localStorage.setItem('user_profile_id',data.public_id);
 			window.localStorage.setItem('user_profile',data.url);
 			userprofile.src = window.localStorage.getItem('user_profile');
 			// save to database
@@ -741,28 +744,17 @@ function profile_imagebutton() { // profile pic
 			console.log(e);
 		});
 	};
+	//
 	const input = document.createElement('input');
 	const userprofile = document.querySelector('#userprofile');
 	input.type = 'file';
 	input.accept = 'image/*';
 	input.addEventListener('change',(event) => {
-		const my_public_id = window.localStorage.getItem('profile_image_public_id');
+		const my_public_id = window.localStorage.getItem('user_profile_id');
 		if (my_public_id !== null) {
-			const del_url = 'https://billowing-band-be64.weeby-nicely369.workers.dev/';
-			fetch(del_url,{
-				method: 'DELETE',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ public_id: my_public_id })
-			})
-			.then(res => res.json())
-			.then(data => {
-				upload_image();
-			})
-			.catch((e) => {
-				console.log(e);
-			});
+			
 		} else {
-			upload_image();
+			upload_image(event);
 		}
 	});
 	input.click();
