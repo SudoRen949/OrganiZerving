@@ -147,11 +147,11 @@ var endpoints = {
 	eventdata: 'https://api.sheetson.com/v2/sheets/Sheet2',
 	requestdata: 'https://api.sheetson.com/v2/sheets/Sheet3',
 	faqdata: 'https://api.sheetson.com/v2/sheets/Sheet4',
-	imagedata: 'https://api.imgur.com/3/image',
+	imagedata: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/upload',
 };
 
 var keys = {
-	imge: 'imge_DBHq_c40e5ce057049d4825dc2756c94388b6032f3487ff1553ceef1b01e6143f96a9f5a79ffc67e94cce9be70281b12c59d26f9f9c1f37aadb671f3278c325a0b74e',
+	image: 'imge_IMmP_265f94563be064a13123b722d85f84b5086edfee1a31e0eeefbc8cea0a801e747198aac1a6c475bf35a863d35bf46ac1441ae405ac93bf7161819bd05827553a',
 	sheetson: 'EV3gPQm_cMRKPWluFroHqUR8kGOKiu0UM9jL-BtdPw-Mvt1QSUejLgdUKVU',
 	gsheet: '1JGEGIcsrSO21VcwVTsEOqfdTUz-bjcBAfL2mSmnmfns',
 };
@@ -207,6 +207,7 @@ window.addEventListener('DOMContentLoaded',() => {
 			const role = document.querySelector('#select3');
 			const password = document.querySelector('#passinput');
 			const token = document.querySelector('#acctoken');
+			const userprofile = document.querySelector('#userprofile');
 			//
 			name.value = window.localStorage.getItem('user_name');
 			age.value = window.localStorage.getItem('user_age');
@@ -220,6 +221,7 @@ window.addEventListener('DOMContentLoaded',() => {
 			role.value = window.localStorage.getItem('user_role');
 			password.value = window.localStorage.getItem('user_password');
 			token.value = window.localStorage.getItem('user_acctoken');
+			userprofile.src = window.localStorage.getItem('user_profile');
 		};
 	}
 	if (eventBody !== null) {
@@ -695,27 +697,73 @@ function profile_savebutton() { // save changes
 
 function profile_imagebutton() { // profile pic
 	if (window.localStorage.getItem('user_username') === null) return;
+	var upload_image = () => {
+		// upload image to server
+		const form = new FormData();
+		form.append('file',event.target.files[0]);
+		form.append('upload_preset','oz_unsigned_preset');
+		const url = endpoints.imagedata;
+		//
+		fetch(url,{
+			method: 'POST',
+			body: form
+		})
+		.then(res => res.json())
+		.then(data => {
+			// console.log(data);
+			window.localStorage.setItem('profile_image_public_id',data.public_id);
+			window.localStorage.setItem('user_profile',data.url);
+			userprofile.src = window.localStorage.getItem('user_profile');
+			// save to database
+			const id = window.localStorage.getItem('user_id');
+			const new_url = endpoints.userdata + '/' + id.toString();
+			fetch(new_url,{
+				method: 'PUT',
+				headers: {
+					'Authorization': 'Bearer ' + keys.sheetson,
+					'X-Spreadsheet-Id': keys.gsheet,
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					Profile: data.url
+				})
+			})
+			.then(res => {
+				if (res.ok) showInfo(popup_info('Profile picture updated.'));
+			})
+			.catch((e) => {
+				showError(popup_error('Sorry for inconvenience, the server is down for a while.'));
+				console.log(e);
+			});
+		})
+		.catch((e) => {
+			showError(popup_error('Unable to update profile picture, <br>please try again.'));
+			console.log(e);
+		});
+	};
 	const input = document.createElement('input');
 	const userprofile = document.querySelector('#userprofile');
 	input.type = 'file';
+	input.accept = 'image/*';
 	input.addEventListener('change',(event) => {
-		const myHeaders = new Headers();
-		myHeaders.append('Authorization','Client-ID '+apiKeys.imgur);
-		const file = event.target.files[0];
-		const formData = new FormData();
-		formData.append('image',file);
-		formData.append('type','image');
-		var requestData = {
-			method: 'POST',
-			headers: myHeaders,
-			body: formData,
-			redirect: 'follow'
-		};
-		fetch(endpoints.imagedata,requestData)
-		.then((response) => response.text())
-		.then((data) => {
-			console.log(data);
-		});
+		const my_public_id = window.localStorage.getItem('profile_image_public_id');
+		if (my_public_id !== null) {
+			const del_url = 'https://billowing-band-be64.weeby-nicely369.workers.dev/';
+			fetch(del_url,{
+				method: 'DELETE',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ public_id: my_public_id })
+			})
+			.then(res => res.json())
+			.then(data => {
+				upload_image();
+			})
+			.catch((e) => {
+				console.log(e);
+			});
+		} else {
+			upload_image();
+		}
 	});
 	input.click();
 }
