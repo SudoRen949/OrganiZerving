@@ -346,7 +346,7 @@ function login_loginbutton() { // log in
 		};
 		const url = new URL(endpoints.userdata);
 		Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-		fetch(url,{ headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
+		fetch(url,{ mode: 'no-cors', headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
 		.then((res) => res.json())
 		.then((data) => {
 			var pass_error = document.querySelector('#passworderror'),
@@ -1014,12 +1014,43 @@ function dashboard_posteventbutton() { // post event
 				transform: translateX(-50%);
 				background: red;
 				z-index: 10;
-				padding: 1.5vw;
+				padding: 1vw;
+				gap: 1.5vw;
+				border-radius: 0.7vw;
+				border: solid white 0.07vw;
+				backdrop-filter: blur(1px);
 			"
 		>
-			<button type="button" onclick="document.querySelector('#post-event-div').remove();">X</button>
-			<label for="eventName">Event Name</label>
-			<input id="eventName" type="text" />
+			<div 
+				style="
+					display: flex;
+					justify-content: flex-end;
+					background: none;
+				"
+			>
+				<button 
+					type="button" 
+					onclick="document.querySelector('#post-event-div').remove();"
+					style="
+						background: 
+					"
+				>X</button>
+			</div>
+			<label 
+				for="eventName" 
+				style="
+					background: none;
+					font-size: 1.5vw;
+				"
+			>Event Name</label>
+			<input 
+				id="eventName"
+				type="text" 
+				style="
+					background: white;
+					font-size: 1.5vw;
+				"
+			/>
 		</div>
 	`;
 }
