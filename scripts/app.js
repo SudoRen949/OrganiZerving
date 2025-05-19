@@ -1007,28 +1007,42 @@ function dashboard_posteventbutton() { // post event
 				flex-direction: column;
 				top: 50%;
 				left: 50%;
-				transform: translateX(-50%);
-				background: red;
+				transform: translate(-50%,-50%);
+				background: #1F1F29;
 				z-index: 10;
-				padding: 1vw;
+				padding: 3vw;
 				gap: 1.5vw;
 				border-radius: 0.7vw;
 				border: solid white 0.07vw;
-				backdrop-filter: blur(1px);
+				width: 50vw;
+				height: 25vw;
+				overflow: scroll;
 			"
 		>
 			<div 
 				style="
 					display: flex;
-					justify-content: flex-end;
+					justify-content: space-between;
+					align-items: center;
 					background: none;
+					font-size: 1.5vw;
+					margin-bottom: 1.5vw;
 				"
 			>
+				<h3>Post an event</h3>
 				<button 
+					class="event-post-close-button"
 					type="button" 
 					onclick="document.querySelector('#post-event-div').remove();"
 					style="
-						background: 
+						background: #63E973;
+						border: none;
+						border-radius: 0.7vw;
+						color: black;
+						padding: 1vw;
+						padding-left: 2vw;
+						padding-right: 2vw;
+						font-size: 1.5vw;
 					"
 				>X</button>
 			</div>
@@ -1045,6 +1059,11 @@ function dashboard_posteventbutton() { // post event
 				style="
 					background: white;
 					font-size: 1.5vw;
+					border: none;
+					border-radius: 0.07vw;
+					height: 2.5vw;
+					color: black;
+					padding-left: 0.7vw;
 				"
 			/>
 		</div>
