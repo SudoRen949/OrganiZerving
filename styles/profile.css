@@ -33,13 +33,14 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	background: black;
 	align-items: center;
 	padding: 1.5vw;
 }
 
 .div1 button {
 	font-size: 1.5vw;
-	padding: 0.7vw;
+	padding: 0.8vw;
 	border: none;
 	border-radius: 0.35vw;
 	background: #63E973;
@@ -55,14 +56,16 @@ body {
 
 .div1 h2 {
 	font-size: 1.75vw;
+	background: black;
 }
 
 .div2 {
 	grid-template-areas: 'nav aside';
+	border-radius: 1vw;
 	display: grid;
 	margin: 1.5vw;
 	filter: drop-shadow(2px 4px 6px black);
-	padding: 1.5vw;
+	padding: 2vw;
 }
 
 /* Left side navigator */
@@ -79,8 +82,11 @@ body {
 	border: none;
 	border-radius: 0.7vw;
 	padding: 1.5vw;
+	padding-top: 2vw;
+	padding-bottom: 2.5vw;
 	padding-left: 5vw;
 	padding-right: 5vw;
+	filter: drop-shadow(1px 2px 3px black);
 	font-size: 1.5vw;
 	margin-right: 1.5vw;
 }
@@ -201,12 +207,13 @@ body {
 	padding-right: 2.5vw;
 	padding-top: 1vw;
 	padding-bottom: 1vw;
+	filter: drop-shadow(2px 0px 3px black);
 	color: black;
 	font-size: 1.3vw;
 }
 
 .div4_2 #delete {
-	background: #CC0000;
+	background: #000000;
 	border: none;
 	border-radius: 0.7vw;
 	padding-left: 2.5vw;

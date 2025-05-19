@@ -346,7 +346,7 @@ function login_loginbutton() { // log in
 		};
 		const url = new URL(endpoints.userdata);
 		Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-		fetch(url,{ mode: 'no-cors', headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
+		fetch(url,{ headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
 		.then((res) => res.json())
 		.then((data) => {
 			var pass_error = document.querySelector('#passworderror'),
