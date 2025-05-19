@@ -1001,7 +1001,27 @@ function dashboard_toolsbutton() { // tools
 }
 
 function dashboard_posteventbutton() { // post event
-	
+	document.body.innerHTML += `
+		<div 
+			class="post-event-div" 
+			id="post-event-div"
+			style="
+				position: absolute;
+				display: flex;
+				flex-direction: column;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%);
+				background: red;
+				z-index: 10;
+				padding: 1.5vw;
+			"
+		>
+			<button type="button" onclick="document.querySelector('#post-event-div').remove();">X</button>
+			<label for="eventName">Event Name</label>
+			<input id="eventName" type="text" />
+		</div>
+	`;
 }
 
 function dashboard_managerequestsbutton() { // manage requests

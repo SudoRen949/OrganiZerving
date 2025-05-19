@@ -297,6 +297,8 @@ body {
 }
 
 .baloon .mainbtn:hover {
+	transition: all 300ms ease-in-out;
+	transform: scale(1.1);
 	background: rgba(70,70,70,1);
 	cursor: pointer;
 }
