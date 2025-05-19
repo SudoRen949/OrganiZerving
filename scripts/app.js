@@ -243,7 +243,7 @@ window.addEventListener('DOMContentLoaded',() => {
 			};
 			const url = new URL(endpoints.eventdata);
 			Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-			fetch(url,{ signal: AbortController.timeout(5000) })
+			fetch(url)
 			.then(res => res.json())
 			.then(data => {
 				div.style.height = 'auto';
@@ -350,8 +350,7 @@ function login_loginbutton() { // log in
 		Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
 		fetch(url,{
 			method: 'GET',
-			headers: { 'Authorization': 'Bearer ' + keys.sheetson }, 
-			signal: AbortController.timeout(5000)
+			headers: { 'Authorization': 'Bearer ' + keys.sheetson, }
 		})
 		.then((res) => res.json())
 		.then((data) => {
@@ -411,7 +410,7 @@ function login_loginbutton() { // log in
 						window.location.href = 'dashboard.html'; // proceed to dashboard
 					})
 					.catch((e) => {
-						showError(popup_error('Sorry for inconvenience, the server is down for a white.'));
+						showError(popup_error('Sorry for inconvenience, the server is down for a while.'));
 						console.log(e);
 					});
 				} else {
@@ -705,7 +704,12 @@ function profile_savebutton() { // save changes
 
 function profile_imagebutton() { // profile pic
 	if (window.localStorage.getItem('user_username') === null) return;
-	var upload_image = (event) => {
+	//
+	const input = document.createElement('input');
+	const userprofile = document.querySelector('#userprofile');
+	input.type = 'file';
+	input.accept = 'image/*';
+	input.addEventListener('change',(event) => {
 		// upload image to server
 		const form = new FormData();
 		form.append('file',event.target.files[0]);
@@ -748,19 +752,6 @@ function profile_imagebutton() { // profile pic
 			showError(popup_error('Unable to update profile picture, <br>please try again.'));
 			console.log(e);
 		});
-	};
-	//
-	const input = document.createElement('input');
-	const userprofile = document.querySelector('#userprofile');
-	input.type = 'file';
-	input.accept = 'image/*';
-	input.addEventListener('change',(event) => {
-		const my_public_id = window.localStorage.getItem('user_profile_id');
-		if (my_public_id !== null) {
-			
-		} else {
-			upload_image(event);
-		}
 	});
 	input.click();
 }
