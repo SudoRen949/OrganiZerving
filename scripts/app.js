@@ -225,6 +225,8 @@ window.addEventListener('DOMContentLoaded',() => {
 			password.value = window.localStorage.getItem('user_password');
 			token.value = window.localStorage.getItem('user_acctoken');
 			userprofile.src = window.localStorage.getItem('user_profile');
+			//
+			document.querySelector('#btn1').click();
 		};
 	}
 	if (eventBody !== null) {
@@ -241,7 +243,7 @@ window.addEventListener('DOMContentLoaded',() => {
 			};
 			const url = new URL(endpoints.eventdata);
 			Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-			fetch(url)
+			fetch(url,{ signal: AbortController.timeout(5000) })
 			.then(res => res.json())
 			.then(data => {
 				div.style.height = 'auto';
@@ -337,7 +339,7 @@ function login_loginbutton() { // log in
 	if (in1.value.length === 0 || in2.value.length === 0) {
 		showError(popup_error('Please fill out the form.'));
 	} else {
-		showMessage(popup_message('Logging in...'),25000);
+		showMessage(popup_message('Logging in...'));
 		// read data
 		const url_params = {
 			cache_bust: Date.now(),
@@ -346,12 +348,15 @@ function login_loginbutton() { // log in
 		};
 		const url = new URL(endpoints.userdata);
 		Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-		fetch(url,{ headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
+		fetch(url,{
+			method: 'GET',
+			headers: { 'Authorization': 'Bearer ' + keys.sheetson }, 
+			signal: AbortController.timeout(5000)
+		})
 		.then((res) => res.json())
 		.then((data) => {
 			var pass_error = document.querySelector('#passworderror'),
 				user_error = document.querySelector('#usererror');
-			// console.log(data);
 			var success = false, id = 0;
 			for (var i = 0; i < data.results.length; ++i) {
 				if (data.results[i].Username === in1.value || data.results[i].Email === in1.value) {

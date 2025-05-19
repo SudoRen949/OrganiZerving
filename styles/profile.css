@@ -64,18 +64,19 @@ body {
 	border-radius: 1vw;
 	display: grid;
 	margin: 1.5vw;
-	filter: drop-shadow(2px 4px 6px black);
 	padding: 2vw;
+	filter: drop-shadow(0.14vw 0.3vw 0.44vw black);
 }
 
 /* Left side navigator */
 
 .div3 {
 	grid-area: 1 / 1 / span 1 / span 1;
-	border-right: solid white 2px;
+	/* border-right: solid white 2px; */
 	display: flex;
 	flex-direction: column;
 	width: 23vw;
+	gap: 1vw;
 }
 
 .div3 button {
@@ -165,13 +166,20 @@ body {
 	width: 4.8vw;
 }
 
+.div4_1_3_1 {
+	gap: 1vw;
+	display: flex;
+	align-items: center;
+}
+
 .div4_1_3_1 label {
 	margin-right: 1.5vw;
+	margin-bottom: 0;
 }
 
 .div4_1_3_1 input[type="radio"] {
-	width: 1vw;
-	height: 1vw;
+	width: 1.5vw;
+	height: 1.5vw;
 }
 
 .div4_1_4 select, .div4_1_7 select,
@@ -225,10 +233,13 @@ body {
 }
 
 .div4_2 #delete:hover {
-	background: #FF0000;
+	transition: all 200ms ease-in;
+	background: #CC0000;
+	filter: drop-shadow();
 }
 
 .div4_2 button:hover {
+	transition: all 200ms ease-in;
 	background: #45944E;
 	cursor: pointer;
 }
@@ -351,43 +362,3 @@ body {
 	align-content: center;
 	align-items: center;
 }
-
-/*@media only screen and (max-width: 425px) {*/
-/*	.div1 h2 { font-size: 3vw; }*/
-/*	.div1 button { font-size: 2.5vw; padding: 8px; padding-left: 20px; padding-right: 20px; border-radius: 2px; }*/
-/*	.div2 { display: block; padding-top: 10px; }*/
-/*	.div3 { gap: 1.5vw; flex-wrap: wrap; justify-content: space-between; flex-direction: row; border: none; border-bottom: solid white 1px; margin-bottom: 20px; }*/
-/*	.div3 button { font-size: 3vw; padding: 5px; padding-left: 20px; padding-right: 20px; margin-right: 0; margin-bottom: 10px; border-radius: 2px; }*/
-/*	.div4 { padding-left: 0px; }*/
-/*	.div4_1 { gap: 10px; }*/
-/*	.div4_1 img { width: 15vw; height: 15vw; border-radius: 5px; }*/
-/*	.div4_1_1 label, .div4_1_2 label, .div4_1_3 label,*/
-/*	.div4_1_4 label, .div4_1_5 label, .div4_1_6 label,*/
-/*	.div4_1_7 label, .div4_1_8 label, .div4_1_9 label*/
-/*	{ font-size: 2.5vw; }*/
-/*	.div4_1_1 input, .div4_1_2 input, .div4_1_3 input,*/
-/*	.div4_1_5 input, .div4_1_6 input, .div4_1_7 input*/
-/*	{ font-size: 2.5vw; height: 5vw; border-radius: 2px; padding-left: 3px; }*/
-/*	.div4_1_1, .div4_1_4, .div4_1_5 { width: 100%; }*/
-/*	.div4_1_2 { width: 10%; }*/
-/*	.div4_1_3 { width: auto; }*/
-/*	.div4_1_6, .div4_1_7 { width: 45%; }*/
-/*	.div4_1_7 { width: 50.5%; }*/
-/*	.div4_1_1 input { width: auto; }*/
-/*	.div4_1_3_1 input[type="radio"] { width: 2.5vw; height: 2.5vw; }*/
-/*	.div4_1_3_1 label { font-size: 3vw; }*/
-/*	.div4_1_4 select, .div4_1_8 select, .div4_1_9 select*/
-/*	{ font-size: 2.5vw; width: 100%; height: 5vw; border-radius: 2px; }*/
-/*	.div4_2 #delete { font-size: 2.4vw; border-radius: 2px; padding: 10px; padding-left: 20px; padding-right: 20px; }*/
-/*	.div4_2 button { font-size: 2.4vw; border-radius: 2px; padding: 10px; padding-left: 20px; padding-right: 20px; }*/
-/*	.div5, .div6, .div7 { padding: 0; }*/
-/*	.div5_1 h4, .div6_1 h4 { font-size: 2.5vw; }*/
-/*	.div7_1_1, .div7_1_2 { width: 100%; }*/
-/*	.div7_1_1 label, .div7_1_2 label*/
-/*	{ font-size: 3vw; }*/
-/*	.div7_1_1 input, .div7_1_2 input*/
-/*	{ font-size: 2.5vw; height: 5vw; }*/
-/*	.div7_2 button { font-size: 3vw; border-radius: 2px; padding: 10px; padding-left: 20px; padding-right: 20px; }*/
-/*	.div4_1_10 { display: flex; justify-content: center; width: 100%; }*/
-/*	.div4_2_1 { font-size: 2.5vw; }*/
-/*}*/
