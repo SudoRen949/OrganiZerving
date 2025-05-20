@@ -1021,7 +1021,7 @@ function dashboard_posteventbutton() { // post event
 				position: absolute; display: flex; flex-direction: column; /*top: 50%;
 				left: 50%; transform: translate(-50%,-50%);*/ background: #1F1F29;
 				z-index: 10; padding: 3vw; gap: 1.5vw; border-radius: 0.7vw;
-				border: solid white 0.07vw; width: 50vw; height: 25vw;
+				border: solid white 0.07vw; width: 50vw; height: 35vw;
 				overflow: scroll;
 			"
 		>
@@ -1045,12 +1045,17 @@ function dashboard_posteventbutton() { // post event
 					"
 				>Close</button>
 			</div>
-			<label for="eventName" style="background: none; font-size: 1.5vw;">Title</label>
-			<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; height: 2.5vw; color: black; padding-left: 0.7vw;"/>
-			<label for="eventName" style="background: none; font-size: 1.5vw;">Date</label>
-			<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; height: 2.5vw; color: black; padding-left: 0.7vw;"/>
-			<label for="eventName" style="background: none; font-size: 1.5vw;">Catered to how many students?</label>
-			<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; height: 2.5vw; color: black; padding-left: 0.7vw;"/>
+			<div class="post-event-group-div-child2" style="display: flex; flex-direction: column; gap: 1vw;">
+				<label for="eventName" style="background: none; font-size: 1.5vw;">Title</label>
+				<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
+				<label for="eventDate" style="background: none; font-size: 1.5vw;">Date & time</label>
+				<div style="display: flex; flex-direction: row; gap: 0.7vw;">
+					<input id="eventDate" type="date" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; width: 50%; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
+					<input id="eventDate" type="time" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; width: 50%; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
+				</div>
+				<label for="eventCat" style="background: none; font-size: 1.5vw;">Catered to how many students?</label>
+				<input id="eventCat" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
+			</div>
 		</div>
 	`;
 	document.body.appendChild(content_div);
