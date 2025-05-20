@@ -362,3 +362,23 @@ body {
 	align-content: center;
 	align-items: center;
 }
+
+.delete-div-button {
+	background: #DD0000;
+}
+
+.delete-div-button:hover {
+	transition: all 200ms ease-in;
+	background: #AA0000;
+	cursor: pointer;
+}
+
+.no-div-button {
+	background: #63E973;
+}
+
+.no-div-button:hover {
+	transition: all 200ms ease-in;
+	background: #45944E;
+	cursor: pointer;
+}

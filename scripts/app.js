@@ -861,20 +861,104 @@ function profile_showpassword() {
 function profile_deletebutton() {
 	var confirmation = () => {
 		const div = document.createElement('div');
+		div.id = 'delete-account-div';
 		div.style.display = 'flex';
 		div.style.position = 'absolute';
 		div.style.justifyContent = 'center';
 		div.style.alignItems = 'center';
+		div.style.background = 'none';
+		div.style.width = '100%';
+		div.style.height = '100%';
+		div.style.zIndex = '10';
+		div.style.top = '0';
+		div.style.left = '0';
+		div.style.right = '0';
+		div.style.bottom = '0';
+		div.style.backdropFilter = 'blur(5px)';
 		div.innerHTML += `
-			<div
-				style="
-					
+			<div style="
+					position: absolute; 
+					display: flex; 
+					flex-direction: column;
+					top: 50%; 
+					left: 50%;
+					transform: translate(-50%,-50%);
+					width: 35%;
+					height: 20%;
+					z-index: 10;
+					background: #1F1F29;
+					border: solid white 0.07vw;
+					border-radius: 0.7vw;
+					padding: 1.5vw;
+					backdrop-filter: blur(5px);
 				"
 			>
+				<h3 style="background: none;">Are you sure you want to delete your account?</h3>
+				<div 
+					style="
+						margin-top: 2vw;
+						display: flex;
+						justify-content: space-between;
+						gap: 0.7vw;
+					"
+				>
+					<button 
+						class="delete-div-button"
+						type="button" 
+						onclick="profile_confirm_deletebutton()"
+						style="
+							/* background: #DD0000; */ 
+							border: none; 
+							border-radius: 0.7vw; 
+							padding: 1vw; 
+							padding-left: 2vw; 
+							padding-right: 2vw;
+							font-size: 1.5vw;
+						"
+					>Yes</button>
+					<button 
+						class="no-div-button"
+						type="button" 
+						onclick="document.querySelector('#delete-account-div').remove()" 
+						style="
+							/* background: #63E973; */
+							border: none; 
+							border-radius: 0.7vw; 
+							padding: 1vw; 
+							padding-left: 2vw; 
+							padding-right: 2vw;
+							font-size: 1.5vw;
+							color: black;
+						"
+					>No</button>
+				</div>
 			</div>
 		`;
+		return div;
 	};
 	document.body.appendChild(confirmation());
+}
+
+function profile_confirm_deletebutton() {
+	if (window.localStorage.getItem('user_username') === null) return;
+	const id = window.localStorage.getItem('user_id');
+	const url = endpoints.userdata + '/' + id;
+	fetch(url,{
+		method: 'DELETE',
+		headers: {
+			'Authorization': 'Bearer ' + keys.sheetson,
+			'X-Spreadsheet-Id': keys.gsheet
+		}
+	})
+	.then(res => {
+		if (!res.ok) showError(popup_error('Unable to delete account.'));
+		window.localStorage.clear();
+		window.location.href = '../index.html';
+	})
+	.catch((e) => {
+		showError(popup_error('No internet connection.'));
+		console.log(e);
+	});
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -992,8 +1076,14 @@ function dashboard_mapbutton() { // map
 }
 
 function dashboard_toolsbutton() { // tools
-	var a1 = document.querySelector('#items');
+	const a1 = document.querySelector('#items');
 	a1.style.visibility = (a1.style.visibility === 'visible') ? a1.style.visibility = 'hidden' : a1.style.visibility = 'visible';
+	// admin button
+	if (window.localStorage.getItem('user_role') === 'Admin' && a1.style.visibility == 'visible') {
+		a1.innerHTML += `
+			<button id="faq-button" type="button" onclick="">Generate FAQ's</button>
+		`;
+	} else document.querySelector('#faq-button').remove();
 }
 
 function dashboard_posteventbutton() { // post event
