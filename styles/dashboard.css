@@ -365,3 +365,11 @@ body {
 	margin-bottom: 2.5vw;
 }
 
+.post-event-close-button {
+	background: #63E973;
+}
+
+.post-event-close-button:hover {
+	cursor: pointer;
+	background: #45944E;
+}

@@ -997,77 +997,63 @@ function dashboard_toolsbutton() { // tools
 }
 
 function dashboard_posteventbutton() { // post event
-	document.body.innerHTML += `
+	const content_div = document.createElement('div');
+	content_div.className = 'post-event-main-div';
+	content_div.id = content_div.className;
+	content_div.style.position = 'absolute';
+	content_div.style.display = 'flex';
+	content_div.style.justifyContent = 'center';
+	content_div.style.alignContent = 'center';
+	content_div.style.alignItems = 'center'
+	content_div.style.zIndex = '10';
+	content_div.style.background = 'none';
+	content_div.style.width = '100%';
+	content_div.style.height = '100%';
+	content_div.style.top = '0';
+	content_div.style.left = '0';
+	content_div.style.right = '0';
+	content_div.style.backdropFilter = 'blur(2px)';
+	content_div.innerHTML += `
 		<div 
-			class="post-event-div" 
-			id="post-event-div"
+			class="post-event-group-div" 
+			id="post-event-group-div"
 			style="
-				position: absolute;
-				display: flex;
-				flex-direction: column;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%,-50%);
-				background: #1F1F29;
-				z-index: 10;
-				padding: 3vw;
-				gap: 1.5vw;
-				border-radius: 0.7vw;
-				border: solid white 0.07vw;
-				width: 50vw;
-				height: 25vw;
+				position: absolute; display: flex; flex-direction: column; /*top: 50%;
+				left: 50%; transform: translate(-50%,-50%);*/ background: #1F1F29;
+				z-index: 10; padding: 3vw; gap: 1.5vw; border-radius: 0.7vw;
+				border: solid white 0.07vw; width: 50vw; height: 25vw;
 				overflow: scroll;
 			"
 		>
 			<div 
+				class="post-event-group-div-child1"
 				style="
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					background: none;
-					font-size: 1.5vw;
-					margin-bottom: 1.5vw;
+					display: flex; justify-content: space-between;
+					align-items: center; background: none;
+					font-size: 1.5vw; margin-bottom: 1.5vw;
 				"
 			>
 				<h3>Post an event</h3>
 				<button 
-					class="event-post-close-button"
+					class="post-event-close-button"
 					type="button" 
-					onclick="document.querySelector('#post-event-div').remove();"
+					onclick="document.querySelector('#post-event-main-div').remove();"
 					style="
-						background: #63E973;
-						border: none;
-						border-radius: 0.7vw;
-						color: black;
-						padding: 1vw;
-						padding-left: 2vw;
-						padding-right: 2vw;
-						font-size: 1.5vw;
+						/* background: #63E973; */ border: none; border-radius: 0.7vw;
+						color: black; padding: 1vw; padding-left: 2vw;
+						padding-right: 2vw; font-size: 1.5vw;
 					"
-				>X</button>
+				>Close</button>
 			</div>
-			<label 
-				for="eventName" 
-				style="
-					background: none;
-					font-size: 1.5vw;
-				"
-			>Event Name</label>
-			<input 
-				id="eventName"
-				type="text" 
-				style="
-					background: white;
-					font-size: 1.5vw;
-					border: none;
-					border-radius: 0.07vw;
-					height: 2.5vw;
-					color: black;
-					padding-left: 0.7vw;
-				"
-			/>
+			<label for="eventName" style="background: none; font-size: 1.5vw;">Title</label>
+			<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; height: 2.5vw; color: black; padding-left: 0.7vw;"/>
+			<label for="eventName" style="background: none; font-size: 1.5vw;">Date</label>
+			<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; height: 2.5vw; color: black; padding-left: 0.7vw;"/>
+			<label for="eventName" style="background: none; font-size: 1.5vw;">Catered to how many students?</label>
+			<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; height: 2.5vw; color: black; padding-left: 0.7vw;"/>
 		</div>
 	`;
+	document.body.appendChild(content_div);
 }
 
 function dashboard_managerequestsbutton() { // manage requests
