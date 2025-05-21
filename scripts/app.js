@@ -1132,7 +1132,7 @@ function forgot_submitbutton() {
 	fetch(url)
 	.then((res) => res.json())
 	.then((data) => {
-		console.log(data);
+		// console.log(data);
 		//get id
 		var id = 0, user_password = null, found_it = false;
 		for (var i = 0; i < data.results.length; ++i) {
@@ -1145,30 +1145,30 @@ function forgot_submitbutton() {
 		}
 		if (found_it) {
 			// send an email
-			const 	name = data.results[id].Name,
-					username = data.results[id].Username,
-					password = data.results[id].Password;
+			const 	usrname = data.results[id].Name,
+					usrusername = data.results[id].Username,
+					usrpassword = data.results[id].Password;
 			var email_data = {
 				service_id: keys.email.serviceId,
 				template_id: keys.email.templateId.forgotPass,
 				user_id: keys.email.userId,
 				template_params: {
 					'email': email_input.value,
-					// 'name': name,
-					// 'username': username,
-					// 'password': password
+					'name': usrname,
+					'username': usrusername,
+					'password': usrpassword
 				}
 			};
 			fetch(endpoints.emailapi,{
 				method: 'POST',
-				mode: 'no-cors',
-				headers: {
-					'Content-Type': 'application/json'
-				},
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(email_data)
 			})
+			.then(res => res.text())
+			.then(data => console.log(data))
 			.catch((e) => {
 				showError(popup_error('Could not send to an email, <br>please make sure the email address is correct and available.'))
+				console.error(e);
 			})
 		}
 	})
