@@ -321,7 +321,7 @@ function login_loginbutton() { // log in
 	if (in1.value.length === 0 || in2.value.length === 0) {
 		showError(popup_error('Please fill out the form.'));
 	} else {
-		showMessage(popup_message('Logging in...'));
+		showMessage(popup_message('Logging in...'),25000);
 		// read data
 		const url_params = {
 			cache_bust: Date.now(),
@@ -374,20 +374,23 @@ function login_loginbutton() { // log in
 					.then((res) => {
 						if (res.status !== 200) return;
 						// save data to local storage
-						window.localStorage.setItem('user_id',id+2);
-						window.localStorage.setItem('user_username',data.results[id].Username);
-						window.localStorage.setItem('user_password',data.results[id].Password);
-						window.localStorage.setItem('user_name',data.results[id].Name);
-						window.localStorage.setItem('user_email',data.results[id].Email);
-						window.localStorage.setItem('user_contact',data.results[id].Contact);
-						window.localStorage.setItem('user_gender',data.results[id].Gender);
-						window.localStorage.setItem('user_role',data.results[id].Role);
-						window.localStorage.setItem('user_dept',data.results[id].Department);
-						window.localStorage.setItem('user_idNumber',data.results[id].IdNumber);
-						window.localStorage.setItem('user_profile',data.results[id].Profile);
-						window.localStorage.setItem('user_age',data.results[id].Age);
-						window.localStorage.setItem('user_status',data.results[id].Status);
-						window.localStorage.setItem('user_acctoken',data.results[id].AccountToken);
+						const user_datas = {
+							'user_id': id+2,
+							'user_username': data.results[id].Username,
+							'user_password': data.results[id].Password,
+							'user_name': data.results[id].Name,
+							'user_email': data.results[id].Email,
+							'user_contact': data.results[id].Contact,
+							'user_gender': data.results[id].Gender,
+							'user_role': data.results[id].Role,
+							'user_dept': data.results[id].Department,
+							'user_idNumber': data.results[id].IdNumber,
+							'user_profile': data.results[id].Profile,
+							'user_age': data.results[id].Age,
+							'user_status': data.results[id].Status,
+							'user_acctoken': data.results[id].AccountToken
+						};
+						Object.keys(user_datas).forEach((k) => window.localStorage.setItem(k,user_datas[k]));
 						//
 						window.location.href = 'dashboard.html'; // proceed to dashboard
 					})
@@ -430,12 +433,9 @@ function signup_backbutton() { // back button
 	var err2 = document.querySelector('#err2');
 	var err3 = document.querySelector('#err3');
 	//
-	err1.style.visibility = 'hidden';
-	err1.style.position = 'absolute';
-	err2.style.visibility = 'hidden';
-	err2.style.position = 'absolute';
-	err3.style.visibility = 'hidden';
-	err3.style.position = 'absolute';
+	err1.style.visibility = 'hidden'; err1.style.position = 'absolute';
+	err2.style.visibility = 'hidden'; err2.style.position = 'absolute';
+	err3.style.visibility = 'hidden'; err3.style.position = 'absolute';
 	//
 	var nxtc = document.querySelector('#counter');
 	var nextbtn = document.querySelector('#nextbutton'),
@@ -467,22 +467,22 @@ function signup_backbutton() { // back button
 function signup_nextbutton() { // next button
 	var gopt = document.getElementsByName('genderopt');
 	var nxtc = document.querySelector('#counter');
-	var input1 = document.querySelector('#fullnameinput');
-	var input2 = document.querySelector('#usernameinput');
-	var input3 = document.querySelector('#emailinput');
-	var input4 = document.querySelector('#passwordinput');
-	var input5 = document.querySelector('#password2input');
-	var input6 = document.querySelector('#dept');
-	var input7 = document.querySelector('#scid');
-	var input8 = document.querySelector('#role');
+	var input1 = document.querySelector('#fullnameinput'),
+		input2 = document.querySelector('#usernameinput'),
+		input3 = document.querySelector('#emailinput'),
+		input4 = document.querySelector('#passwordinput'),
+		input5 = document.querySelector('#password2input'),
+		input6 = document.querySelector('#dept'),
+		input7 = document.querySelector('#scid'),
+		input8 = document.querySelector('#role');
 	var nextbutton = document.querySelector('#nextbutton');
-	var ia1 = document.getElementById('inputarea');
-	var ia2 = document.getElementById('inputarea2');
-	var ia3 = document.getElementById('inputarea3');
+	var ia1 = document.getElementById('inputarea'),
+		ia2 = document.getElementById('inputarea2'),
+		ia3 = document.getElementById('inputarea3');
 	//
-	var err1 = document.querySelector('#err1');
-	var err2 = document.querySelector('#err2');
-	var err3 = document.querySelector('#err3');
+	var err1 = document.querySelector('#err1'),
+		err2 = document.querySelector('#err2'),
+		err3 = document.querySelector('#err3');
 	//
 	function nextpage() {
 		if (signupvars.number < signupvars.over) signupvars.number += 1;

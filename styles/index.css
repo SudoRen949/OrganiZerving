@@ -71,7 +71,7 @@ noscript {
 #loginbutton {
 	background: none;
 	border: none;
-	border-radius: 0.7vw;
+	/* border-radius: 0.7vw; */
 	color: #FFFFFF;
 	padding-left: 2.5vw;
 	padding-right: 2.5vw;
@@ -82,7 +82,7 @@ noscript {
 #signupbutton {
 	background: #63E973;
 	border: none;
-	border-radius: 0.7vw;
+	/* border-radius: 0.7vw; */
 	color: #000000;
 	padding-left: 2.5vw;
 	padding-right: 2.5vw;
@@ -93,6 +93,7 @@ noscript {
 #loginbutton, #signupbutton {
 	text-decoration: none;
 	font-size: 1.5vw;
+	border-radius: 0.3vw;
 }
 
 .motto {

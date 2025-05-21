@@ -3,64 +3,70 @@
 	<head>
 		<title>OrganiZerving</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="../styles/request.css">
+		<link rel="stylesheet" href="../../styles/services/request.css">
 		<link rel="icon" type="image/png" href="../images/favicon_testing.png">
-		<script type="text/javascript" src="../scripts/app.js"></script>
+		<script type="text/javascript" src="../../scripts/app.js"></script>
 	</head>
 	<body>
 		<div class="taskbar">
-		<h1>O<span style="color: White;">Z</span></h1>
-		<div class="profilecontainer">
-			<div class="profilebutton">
-			<img id="userprofile" alt="user_profile" src="../images/userprofiles/uprofile.png">
-			<h3 id="username">Username</h3>
-			<button type="button" onclick="dashboard_menubutton()">
-				<h2 style="font-size: 3vw; margin-left: 0.5vw; margin-right: 0.5vw;"><b>&equiv;</b></h2>
-			</button>
+			<h1 style="color: white">OZ<span style="color: White;"></span></h1>
+			<div class="profilecontainer">
+				<img id="userprofile" alt="user_profile" src="../../images/userprofiles/uprofile.png">
+				<h3 id="username">Username</h3>
+				<button type="button" onclick="dashboard_menubutton()">
+					<h2 style="font-size: 3vw; margin-left: 0.5vw; margin-right: 0.5vw;"><b>&equiv;</b></h2>
+				</button>
+				<div class="profilebutton">
+				
+				</div>
 			</div>
-		</div>
 		</div>
 		<div class="request-container">
-			<h1>Request</h1>
-			<p>Please fill out form</p>
+			<h1 class="title">Request</h1>
+			<p class="title2">Please fill out form</p>
 			<form class="request-form">
-			<div class="form-row">
-				<input type="text" placeholder="First Name">
-				<input type="text" placeholder="Last Name">
-				<input type="text" placeholder="Middle Name">
-			</div>
-			<div class="form-row">
-				<select>
-				<option disabled selected>Course</option>
-				<option>BSCPE</option>
-				<option>BSIT</option>
-				<option>example</option>
-				</select>
-				<select>
-				<option disabled selected>Year</option>
-				<option>1st</option>
-				<option>2nd</option>
-				<option>3rd</option>
-				<option>4th</option>
-				</select>
-				<input type="text" placeholder="ID Number">
-			</div>
-			<div class="form-row">
-				<select>
-				<option disabled selected>Item to be requested</option>
-				<option>Document A</option>
-				<option>Document B</option>
-				</select>
-				<input type="number" placeholder="Qty. (limit only to 4)" max="4">
-				<input type="text" placeholder="Contact Number">
-			</div>
-			<div class="form-buttons">
-				<button type="submit" class="submit-btn">Submit request form</button>
-				<button type="button" class="print-btn">Print form</button>
-			</div>
-			<p class="note">Reminder: you can only request once.</p>
+				<div class="form-row">
+					<input type="text" placeholder="First Name">
+					<input type="text" placeholder="Last Name">
+					<input type="text" placeholder="Middle Name">
+				</div>
+				<div class="form-row">
+					<select>
+					<option disabled selected>Course</option>
+					<option>BSCPE</option>
+					<option>BSIT</option>
+					<option>example</option>
+					</select>
+					<select>
+					<option disabled selected>Year</option>
+					<option>1st</option>
+					<option>2nd</option>
+					<option>3rd</option>
+					<option>4th</option>
+					</select>
+					<input type="text" placeholder="ID Number">
+				</div>
+				<div class="form-row">
+					<select>
+					<option disabled selected>Item to be requested</option>
+					<option>Document A</option>
+					<option>Document B</option>
+					</select>
+					<input type="number" placeholder="Qty. (limit only to 4)" max="4">
+					<input type="text" placeholder="Contact Number">
+				</div>
+				<div class="form-buttons">
+					<button type="submit" class="submit-btn">Submit request form</button>
+					<button type="button" class="print-btn">Print form</button>
+				</div>
+				<p class="note">Reminder: you can only request once.</p>
 			</form>
 			<button class="back-btn">&larr; Back</button>
+		</div>
+		<div class="user-menu-main">
+			<div class="user-menu-slide">
+				
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,8 +1,9 @@
-body {
+/* body {
   margin: 0;
   background-color: #1F1F29;
   font-family: 'Segoe UI', sans-serif;
   color: #FFFFFF;
+  zoom: 0.85;
 }
 
 .request-container {
@@ -111,7 +112,7 @@ select option[disabled] {
 
 .taskbar {
 	display: flex;
-	padding: 1vw;
+	padding: 1.5vw;
 	padding-left: 2vw;
 	padding-right: 2vw;
 	flex-wrap: nowrap;
@@ -139,8 +140,8 @@ select option[disabled] {
 }
 
 .profilebutton img {
-  width: 3vw;
-  height: 3vw;
+  width: 1vw;
+  height: 1vw;
   border-radius: 50%;
 }
 
@@ -156,4 +157,100 @@ select option[disabled] {
   color: white;
   cursor: pointer;
 }
+ */
 
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;;
+  zoom: 0.85;
+  background: #1F1F29;
+}
+
+input, select {
+  flex: 1;
+  padding: 1vw;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5vw;
+  background-color: #2B2B3A;
+  color: white;
+}
+
+.taskbar {
+  background: black;
+  display: flex;
+  padding: 1.5vw;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid white 0.07vw;
+}
+
+.taskbar .profilecontainer {
+  display: flex;
+  color: white;
+  gap: 1vw;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1vw;
+}
+
+.taskbar h1 {
+  font-size: 2vw;
+}
+
+.profilecontainer img {
+  width: 10%;
+  border-radius: 25vw;
+}
+
+.profilecontainer button {
+  background: none;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 1.31vw;
+  padding: 0;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+}
+
+.profilecontainer button:hover {
+  background: rgba(100,100,100,20);
+  cursor: pointer;
+}
+
+.request-container {
+  background: #1F1F29;
+  padding-top: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.request-container .title {
+  color: white;
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+}
+
+.request-container .title2 {
+  color: gray;
+  font-size: 2vw;
+}
+
+.request-form {
+  margin-top: 2.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.request-form .form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1vw;
+}
