@@ -1164,12 +1164,19 @@ function forgot_submitbutton() {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(email_data)
 			})
-			.then(res => res.text())
-			.then(data => console.log(data))
-			.catch((e) => {
-				showError(popup_error('Could not send to an email, <br>please make sure the email address is correct and available.'))
-				console.error(e);
+			.then((res) => {
+				res.text();
+				if (res.ok) {
+					showInfo(popup_info('Email sent.'));
+					window.location.href = '../login.html';
+				}
 			})
+			.catch((e) => {
+				showError(popup_error('Could not send the email, <br>please make sure the email address is available.'));
+				console.error(e);
+			});
+		} else {
+			showError(popup_error('There is no account registered in this email account.'));
 		}
 	})
 	.catch((e) => {
