@@ -7,7 +7,7 @@
 		<link rel="icon" type="image/png" href="../images/favicon_testing.png">
 		<script type="text/javascript" src="../../scripts/app.js"></script>
 	</head>
-	<body>
+	<body id="rqbdy">
 		<div class="taskbar">
 			<h1 style="color: white">OZ<span style="color: White;"></span></h1>
 			<div class="profilecontainer">
@@ -16,9 +16,6 @@
 				<button type="button" onclick="dashboard_menubutton()">
 					<h2 style="font-size: 3vw; margin-left: 0.5vw; margin-right: 0.5vw;"><b>&equiv;</b></h2>
 				</button>
-				<div class="profilebutton">
-				
-				</div>
 			</div>
 		</div>
 		<div class="request-container">
@@ -35,7 +32,6 @@
 					<option disabled selected>Course</option>
 					<option>BSCPE</option>
 					<option>BSIT</option>
-					<option>example</option>
 					</select>
 					<select>
 					<option disabled selected>Year</option>
@@ -49,15 +45,15 @@
 				<div class="form-row">
 					<select>
 					<option disabled selected>Item to be requested</option>
-					<option>Document A</option>
-					<option>Document B</option>
+					<option>Booklet</option>
+					<!-- <option></option> -->
 					</select>
 					<input type="number" placeholder="Qty. (limit only to 4)" max="4">
 					<input type="text" placeholder="Contact Number">
 				</div>
 				<div class="form-buttons">
-					<button type="submit" class="submit-btn">Submit request form</button>
-					<button type="button" class="print-btn">Print form</button>
+					<button type="submit" class="submit-btn" onclick="request_submit()">Submit request form</button>
+					<button type="button" class="print-btn" onclick="request_printform()">Print form</button>
 				</div>
 				<p class="note">Reminder: you can only request once.</p>
 			</form>
