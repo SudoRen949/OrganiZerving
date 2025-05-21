@@ -177,6 +177,7 @@ window.addEventListener('DOMContentLoaded',() => {
 	const profileBody = document.querySelector('#pfbdy');
 	const eventBody = document.querySelector('#evtbdy');
 	const indexBody = document.querySelector('#idxbdy');
+	const faqBody = document.querySelector('#fqbdy');
 	if (dashboardBody !== null) {
 		dashboardBody.onload = () => {
 			lock();
@@ -295,6 +296,65 @@ window.addEventListener('DOMContentLoaded',() => {
 	if (indexBody !== null) {
 		indexBody.onload = () => {
 			console.log('Website loaded!');
+		};
+	}
+	if (faqBody !== null) {
+		faqBody.onload = () => {
+			const fc = document.querySelector('#faqcontainer');
+			const fs = document.querySelector('#faqsection');
+			const loadingimg = document.querySelector('#loadingimg');
+			if (fc.style.visibility === 'hidden') {
+				fc.style.visibility = 'visible';
+				// show loading screen
+				loadingimg.style.visibility = 'visible';
+				loadingimg.style.position = 'relative';
+				// fetch datas
+				const url_params = {
+					cache_bust: Date.now(),
+					apiKey: keys.sheetson,
+					spreadsheetId: keys.gsheet
+				};
+				const url = new URL(endpoints.faqdata);
+				Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
+				fetch(url)
+				.then((r) => r.json())
+				.then((data) => {
+					// hide loading screen
+					loadingimg.style.visibility = 'hidden';
+					loadingimg.style.position = 'absolute';
+					if (data.results.length == 0) {
+						document.querySelector('#faqmessage').style.visibility = 'visible';
+						document.querySelector('#faqmessage').style.positive = 'relative';
+					} else {
+						document.querySelector('#faqsection').style.justifyContent = 'flex-start';
+						document.querySelector('#faqsection').style.flexDirection = 'column';
+						document.querySelector('#faqsection').style.paddingBottom = '7vw';
+						document.querySelector('#faqsection').style.overflow = 'scroll';
+						for (var i = 0; i < data.results.length; ++i) {
+							if (data.results[i].Question !== null) {
+								// show formatted datas
+								const number = i + 1;
+								document.querySelector('#faqsection').innerHTML += ` \
+									<div class="faqbox" id="faqbox" style="margin-top: 4vw; width: 100%">
+										<h1>Q`+number.toString()+`: `+data.results[i].Question+`<br><br></h1>
+										<p style="font-size: 1.7vw; color: lightgreen;"><b style="color: lightgreen;">Answer</b>: `+data.results[i].Answer+`<br><br><br></p>
+										<hr>
+									</div>
+								`;
+							}
+						}
+					}
+				})
+				.catch((e) => {
+					showError(popup_error('No internet connection.'));
+					fs.innerHTML = '<h2 style="color: red;">Failed to load FAQs<br>Reason: No internet</h2>';
+					console.log(e);
+				});
+			} else {
+				fc.style.visibility = 'hidden';
+				loadingimg.style.visibility = 'hidden';
+				loadingimg.style.position = 'absolute';
+			}
 		};
 	}
 });
@@ -982,64 +1042,6 @@ function dashboard_logoutbutton() { // log out
 	});
 }
 
-function dashboard_faqbutton() { // faq
-	const fc = document.querySelector('#faqcontainer');
-	const fs = document.querySelector('#faqsection');
-	const loadingimg = document.querySelector('#loadingimg');
-	if (fc.style.visibility === 'hidden') {
-		fc.style.visibility = 'visible';
-		// show loading screen
-		loadingimg.style.visibility = 'visible';
-		loadingimg.style.position = 'relative';
-		// fetch datas
-		const url_params = {
-			cache_bust: Date.now(),
-			apiKey: keys.sheetson,
-			spreadsheetId: keys.gsheet
-		};
-		const url = new URL(endpoints.faqdata);
-		Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-		fetch(url)
-		.then((r) => r.json())
-		.then((data) => {
-			// hide loading screen
-			loadingimg.style.visibility = 'hidden';
-			loadingimg.style.position = 'absolute';
-			if (data.results.length == 0) {
-				document.querySelector('#faqmessage').style.visibility = 'visible';
-				document.querySelector('#faqmessage').style.positive = 'relative';
-			} else {
-				document.querySelector('#faqsection').style.justifyContent = 'flex-start';
-				document.querySelector('#faqsection').style.flexDirection = 'column';
-				document.querySelector('#faqsection').style.paddingBottom = '7vw';
-				document.querySelector('#faqsection').style.overflow = 'scroll';
-				for (var i = 0; i < data.results.length; ++i) {
-					if (data.results[i].Question !== null) {
-						// show formatted datas
-						const number = i + 1;
-						document.querySelector('#faqsection').innerHTML += ` \
-							<div class="faqbox" id="faqbox" style="margin-top: 4vw; width: 100%">
-								<h1>Q`+number.toString()+`: `+data.results[i].Question+`<br><br></h1>
-								<p style="font-size: 1.7vw; color: lightgreen;">Answer: `+data.results[i].Answer+`<br><br><br></p>
-								<hr>
-							</div>
-						`;
-					}
-				}
-			}
-		})
-		.catch((e) => {
-			showError(popup_error('No internet connection.'));
-			fs.innerHTML = '<h2 style="color: red;">Failed to load FAQs<br>Reason: No internet</h2>';
-			console.log(e);
-		});
-	} else {
-		fc.style.visibility = 'hidden';
-		loadingimg.style.visibility = 'hidden';
-		loadingimg.style.position = 'absolute';
-	}
-}
-
 function dashboard_eventbutton() { // event
 	window.location.href = 'services/event.html';
 }
@@ -1183,4 +1185,22 @@ function forgot_submitbutton() {
 		showError(popup_error('No internet connection.'));
 		console.error(e);
 	});
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// REQUEST SCRIPT
+
+function request_menubutton() {
+	const menu = document.getElementById('user-menu-main');
+	const menu_slide = document.getElementById('user-menu-slide');
+	if (menu.style.visibility == 'hidden') {
+		menu_slide.style.transition = 'all 300ms ease-in-out';
+		menu_slide.style.transform = 'translateX(-0.1%)';
+		menu.style.visibility = 'visible';
+	} else {
+		menu.style.visibility = 'hidden';
+		menu_slide.style.transition = 'all 300ms ease-in-out';
+		menu_slide.style.transform = 'translateX(99.9%)';
+	}
 }

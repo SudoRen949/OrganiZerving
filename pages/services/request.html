@@ -13,7 +13,7 @@
 			<div class="profilecontainer">
 				<img id="userprofile" alt="user_profile" src="../../images/userprofiles/uprofile.png">
 				<h3 id="username">Username</h3>
-				<button type="button" onclick="dashboard_menubutton()">
+				<button type="button" onclick="request_menubutton()">
 					<h2 style="font-size: 3vw; margin-left: 0.5vw; margin-right: 0.5vw;"><b>&equiv;</b></h2>
 				</button>
 			</div>
@@ -57,11 +57,23 @@
 				</div>
 				<p class="note">Reminder: you can only request once.</p>
 			</form>
-			<button class="back-btn">&larr; Back</button>
+			<a class="back-btn" href="../dashboard.html" style="text-decoration: none;">&larr; Back</a>
 		</div>
-		<div class="user-menu-main">
-			<div class="user-menu-slide">
-				
+		<div class="user-menu-main" id="user-menu-main" style="visibility: hidden;">
+			<div class="user-menu-slide" id="user-menu-slide">
+				<div class="user-menu-header">
+					<button onclick="request_menubutton()">&larr;</button>
+					<p id="user-menu-username">Username (Role)</p>
+					<img alt="profile" src="../../images/userprofiles/uprofile.png">
+				</div>
+				<div class="user-menu-body">
+					<a href="../profile.html">Account Settings</a>
+					<a href="../redirect/faq.html">FAQ's</a>
+					<a href="../redirect/reachus.html">Contact us</a>
+				</div>
+				<div class="user-menu-footer">
+					<button class="user-menu-logout-btn" onclick="dashboard_logoutbutton()">Log out</button>
+				</div>
 			</div>
 		</div>
 	</body>

@@ -228,62 +228,6 @@ body {
 	cursor: pointer;
 }
 
-.faqcontainer {
-	display: block;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background: #1F1F29;
-	z-index: 3;
-	zoom: 0.85;
-}
-
-.faqcontainer .fcquicknav {
-	gap: 27vw;
-	position: fixed;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	padding: 2vw;
-	width: 100%;
-	border-bottom: solid white 0.07vw;
-	align-items: center;
-}
-
-.faqcontainer .fcquicknav button {
-	font-size: 1.5vw;
-	border: none;
-	background: #63E973;
-	border-radius: 0.35vw;
-	color: black;
-	padding: 1vw;
-	padding-left: 1.5vw;
-	padding-right: 1.5vw;
-}
-
-.faqcontainer .fcquicknav button:hover {
-	cursor: pointer;
-	background: #45944E;
-}
-
-.faqcontainer .faqsection {
-	display: flex;
-	/*flex-direction: column;*/
-	/*justify-content: flex-start;*/
-	justify-content: center;
-	padding-top: 8vw;
-	height: 100%;
-	align-items: center;
-	padding-left: 30vw;
-	padding-right: 30vw;
-	/*padding-bottom: 7vw;*/
-	/*overflow: scroll;*/
-}
-
-.faqsection img {
-	height: 10%;
-}
-
 .baloon {
 	visibility: hidden;
 	position: absolute;
@@ -335,15 +279,6 @@ body {
 	background: rgba(70,70,70,1);
 	color: lightgreen;
 	cursor: pointer;
-}
-
-.fcquicknav .faqtitle {
-	display: flex;
-	width: 100%;
-	position: inherit;
-	z-index: -1;
-	justify-content: center;
-	transform: translateX(-1.8vw);
 }
 
 .description {
