@@ -141,22 +141,27 @@ function generateToken(len) {
 	return token;
 }
 
-// API endpoints
 var endpoints = {
 	userdata: 'https://api.sheetson.com/v2/sheets/Sheet1',
 	eventdata: 'https://api.sheetson.com/v2/sheets/Sheet2',
 	requestdata: 'https://api.sheetson.com/v2/sheets/Sheet3',
 	faqdata: 'https://api.sheetson.com/v2/sheets/Sheet4',
-	imagedata: {
-		upload: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/upload',
-		delete: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/destroy'
-	},
+	imagedata: 'https://api.cloudinary.com/v1_1/dgywsyqwq/image/upload',
+	emailapi: 'https://api.emailjs.com/api/v1.0/email/send'
 };
 
 var keys = {
 	image: 'imge_IMmP_265f94563be064a13123b722d85f84b5086edfee1a31e0eeefbc8cea0a801e747198aac1a6c475bf35a863d35bf46ac1441ae405ac93bf7161819bd05827553a',
 	sheetson: 'EV3gPQm_cMRKPWluFroHqUR8kGOKiu0UM9jL-BtdPw-Mvt1QSUejLgdUKVU',
 	gsheet: '1JGEGIcsrSO21VcwVTsEOqfdTUz-bjcBAfL2mSmnmfns',
+	email: {
+		serviceId: 'service_j7tj278',
+		templateId: {
+			forgotPass: 'template_64wh34l',
+			resetPass: 'template_ul6t4c8'
+		},
+		userId: 'mqLZz5yk9OVkjm1d6',
+	}
 };
 
 // Prevents unnecessary actions
@@ -268,34 +273,11 @@ window.addEventListener('DOMContentLoaded',() => {
 								<p style="margin-bottom: 0.5vw; font-size: 1.5vw">+ Catered To `+data.results[i].CateredTo+` Students</h4>
 								<p style="margin-bottom: 2vw; font-size: 1.5vw">+ `+data.results[i].Purpose+`</h4>
 								<hr>
-								<div
-									style="
-										display: flex;
-										justify-content: flex-start;
-										width: 100%;
-										margin-top: 1.5vw;
-									"
-								>
-									<a
-										id="regbutton"
-										type="button"
-										style="background: #0000EE;
-											color: white;
-											padding: 1vw;
-											padding-left: 2vw;
-											padding-right: 2vw;
-											font-size: 1.5vw;
-											border-radius: 0.7vw;
-											text-decoration: none;
-										"
-										onmouseover="
-											document.getElementById('regbutton').style.background = '#4040FF';
-										"
-										onmouseleave="
-											document.getElementById('regbutton').style.background = '#0000EE';
-										"
-										href="`+data.results[i].Link+`"
-									>Register</a>
+								<div style="display: flex; justify-content: flex-start; width: 100%; margin-top: 1.5vw;">
+									<a 	id="regbutton" type="button" style="background: #0000EE; color: white; padding: 1vw; padding-left: 2vw; padding-right: 2vw; font-size: 1.5vw; border-radius: 0.7vw; text-decoration: none;"
+										onmouseover=" document.getElementById('regbutton').style.background = '#4040FF';"
+										onmouseleave="document.getElementById('regbutton').style.background = '#0000EE';"
+										href="`+data.results[i].Link+`">Register</a>
 								</div>
 							`;
 							return div;
@@ -312,7 +294,7 @@ window.addEventListener('DOMContentLoaded',() => {
 	}
 	if (indexBody !== null) {
 		indexBody.onload = () => {
-			// console.log('Hello World');
+			console.log('Website loaded!');
 		};
 	}
 });
@@ -530,73 +512,72 @@ function signup_nextbutton() { // next button
 				if (input6.options[input6.selectedIndex].value === null ||
 					input8.options[input8.selectedIndex].value === null) {
 					showError(popup_error('Please fill out the form.'));
-				}
-				err3.style.visibility = 'hidden'; err3.style.position = 'absolute';
-				// checks if account already registered...
-				const url = new URL(endpoints.userdata);
-				const url_params = {
-					cache_bust: Date.now(),
-					apiKey: keys.sheetson,
-					spreadsheetId: keys.gsheet
-				};
-				Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
-				fetch(url,{ headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
-				.then((res) => res.json()) // convert to JSON
-				.then(data => {
-					// console.log(data);
-					var alreadyRegistered = false;
-					for (var i = 0; i < data.results.length; ++i) {
-						if (input3.value == data.results[i].Email) { alreadyRegistered = true; break; }
-					}
-					if (alreadyRegistered) showError(popup_error('The email "' + input3.value + '" has already been taken.'));
-					else {
-						// add new data to the database
-						const token = generateToken(20); // generates 20 character token
-						const gender = (document.querySelector('#male').checked) ? document.querySelector('#male').value : document.querySelector('#female').value;
-						const data = {
-							Username: input2.value,
-							Password: input5.value,
-							Name: input1.value,
-							Email: input3.value,
-							Contact: document.querySelector('#contactinput').value,
-							Gender: gender,
-							Role: input8.options[input8.selectedIndex].value,
-							Department: input6.options[input6.selectedIndex].value,
-							IdNumber: input7.value,
-							AccountToken: token,
-							Profile: '../images/userprofiles/uprofile.png',
-							Age: '-',
-							Status: 'Single',
-							Flag: 'Logged out'
-						};
-						const new_url = endpoints.userdata;
-						fetch(new_url,{
-							method: 'POST',
-							headers: {
-								'Authorization': 'Bearer ' + keys.sheetson,
-								'X-Spreadsheet-Id': keys.gsheet,
-								'Content-Type': 'application/json'
-							},
-							body: JSON.stringify(data)
-						})
-						.then((res) => {
-							if (res.ok) {
-								showMessage(popup_message('Account created successfuly. <br>Redirecting to the login page'));
-								setTimeout(() => {
+				} else {
+					err3.style.visibility = 'hidden'; err3.style.position = 'absolute';
+					// checks if account already registered...
+					const url = new URL(endpoints.userdata);
+					const url_params = {
+						cache_bust: Date.now(),
+						apiKey: keys.sheetson,
+						spreadsheetId: keys.gsheet
+					};
+					Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
+					fetch(url,{ headers: { 'Authorization': 'Bearer ' + keys.sheetson } })
+					.then((res) => res.json()) // convert to JSON
+					.then(data => {
+						// console.log(data);
+						var alreadyRegistered = false;
+						for (var i = 0; i < data.results.length; ++i) {
+							if (input3.value == data.results[i].Email) { alreadyRegistered = true; break; }
+						}
+						if (alreadyRegistered) showError(popup_error('The email "' + input3.value + '" has already been taken.'));
+						else {
+							// add new data to the database
+							const token = generateToken(20); // generates 20 character token
+							const gender = (document.querySelector('#male').checked) ? document.querySelector('#male').value : document.querySelector('#female').value;
+							const data = {
+								Username: input2.value,
+								Password: input5.value,
+								Name: input1.value,
+								Email: input3.value,
+								Contact: document.querySelector('#contactinput').value,
+								Gender: gender,
+								Role: input8.options[input8.selectedIndex].value,
+								Department: input6.options[input6.selectedIndex].value,
+								IdNumber: input7.value,
+								AccountToken: token,
+								Profile: '../images/userprofiles/uprofile.png',
+								Age: '-',
+								Status: 'Single',
+								Flag: 'Logged out'
+							};
+							const new_url = endpoints.userdata;
+							fetch(new_url,{
+								method: 'POST',
+								headers: {
+									'Authorization': 'Bearer ' + keys.sheetson,
+									'X-Spreadsheet-Id': keys.gsheet,
+									'Content-Type': 'application/json'
+								},
+								body: JSON.stringify(data)
+							})
+							.then((res) => {
+								if (res.ok) {
+									showMessage(popup_message('Account created successfuly. <br>Redirecting to the login page'));
 									window.location.href = 'login.html';
-								}, 5000);
-							}
-						})
-						.catch((e) => {
-							showError(popup_error('Sorry for inconvenience, the server is down for a while.'));
-							console.log(e);
-						});
-					}
-				})
-				.catch((e) => {
-					showError(popup_error('No internet connection.'));
-					console.log(e);
-				});
+								}
+							})
+							.catch((e) => {
+								showError(popup_error('Sorry for inconvenience, the server is down for a while.'));
+								console.log(e);
+							});
+						}
+					})
+					.catch((e) => {
+						showError(popup_error('No internet connection.'));
+						console.log(e);
+					});
+				}
 			}
 		}
 	} else {
@@ -714,7 +695,7 @@ function profile_imagebutton() { // profile pic
 		const form = new FormData();
 		form.append('file',event.target.files[0]);
 		form.append('upload_preset','oz_unsigned_preset');
-		const url = endpoints.imagedata.upload;
+		const url = endpoints.imagedata;
 		//
 		fetch(url,{
 			method: 'POST',
@@ -1087,68 +1068,12 @@ function dashboard_toolsbutton() { // tools
 }
 
 function dashboard_posteventbutton() { // post event
-	const content_div = document.createElement('div');
-	content_div.className = 'post-event-main-div';
-	content_div.id = content_div.className;
-	content_div.style.position = 'absolute';
-	content_div.style.display = 'flex';
-	content_div.style.justifyContent = 'center';
-	content_div.style.alignContent = 'center';
-	content_div.style.alignItems = 'center'
-	content_div.style.zIndex = '10';
-	content_div.style.background = 'none';
-	content_div.style.width = '100%';
-	content_div.style.height = '100%';
-	content_div.style.top = '0';
-	content_div.style.left = '0';
-	content_div.style.right = '0';
-	content_div.style.backdropFilter = 'blur(2px)';
-	content_div.innerHTML += `
-		<div 
-			class="post-event-group-div" 
-			id="post-event-group-div"
-			style="
-				position: absolute; display: flex; flex-direction: column; /*top: 50%;
-				left: 50%; transform: translate(-50%,-50%);*/ background: #1F1F29;
-				z-index: 10; padding: 3vw; gap: 1.5vw; border-radius: 0.7vw;
-				border: solid white 0.07vw; width: 50vw; height: 35vw;
-				overflow: scroll;
-			"
-		>
-			<div 
-				class="post-event-group-div-child1"
-				style="
-					display: flex; justify-content: space-between;
-					align-items: center; background: none;
-					font-size: 1.5vw; margin-bottom: 1.5vw;
-				"
-			>
-				<h3>Post an event</h3>
-				<button 
-					class="post-event-close-button"
-					type="button" 
-					onclick="document.querySelector('#post-event-main-div').remove();"
-					style="
-						/* background: #63E973; */ border: none; border-radius: 0.7vw;
-						color: black; padding: 1vw; padding-left: 2vw;
-						padding-right: 2vw; font-size: 1.5vw;
-					"
-				>Close</button>
-			</div>
-			<div class="post-event-group-div-child2" style="display: flex; flex-direction: column; gap: 1vw;">
-				<label for="eventName" style="background: none; font-size: 1.5vw;">Title</label>
-				<input id="eventName" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
-				<label for="eventDate" style="background: none; font-size: 1.5vw;">Date & time</label>
-				<div style="display: flex; flex-direction: row; gap: 0.7vw;">
-					<input id="eventDate" type="date" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; width: 50%; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
-					<input id="eventDate" type="time" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; width: 50%; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
-				</div>
-				<label for="eventCat" style="background: none; font-size: 1.5vw;">Catered to how many students?</label>
-				<input id="eventCat" type="text" style="background: white; font-size: 1.5vw; border: none; border-radius: 0.07vw; color: black; padding-left: 0.7vw; margin-bottom: 1vw; padding-top: 0.5vw; padding-bottom: 0.5vw;"/>
-			</div>
-		</div>
-	`;
-	document.body.appendChild(content_div);
+	const div = document.getElementById('post-event-main-div');
+	div.style.visibility = (div.style.visibility == 'hidden') ? 'visible' : 'hidden';
+}
+
+function dashboard_show_post_event_menu() {
+	document.querySelector('#post-event-main-div').style.visibility = 'hidden';
 }
 
 function dashboard_managerequestsbutton() { // manage requests
@@ -1179,4 +1104,76 @@ function dashboard_showdescription4() {
 	a.style.position = (a.style.position === 'absolute') ? a.style.position = 'relative' : a.style.position = 'absolute';
 }
 
+function dashboard_submiteventpost() {
+	// prepare all data
+	const 	title = document.getElementById('event-name').value,
+			date_and_time = document.getElementById('event-date').value + '_' + document.getElementById('event-time').value,
+			catered_to = document.getElementById('event-cat').value,
+			banner_image = document.getElementById('event-banner').files[0],
+			desc = document.getElementById('event-desc').innerHTML;
+	// ready to fetch to event data
+	
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// FORGOT SCRIPT
+
+function forgot_submitbutton() {
+	// get data of the user first
+	const email_input = document.getElementById('emailinput');
+	const url_params = {
+		cache_bust: Date.now(),
+		apiKey: keys.sheetson,
+		spreadsheetId: keys.gsheet
+	};
+	const url = new URL(endpoints.userdata);
+	Object.keys(url_params).forEach((k) => url.searchParams.append(k,encodeURIComponent(url_params[k])));
+	fetch(url)
+	.then((res) => res.json())
+	.then((data) => {
+		console.log(data);
+		//get id
+		var id = 0, user_password = null, found_it = false;
+		for (var i = 0; i < data.results.length; ++i) {
+			if (email_input.value === data.results[i].Email) {
+				id = i;
+				user_password = data.results[i].Password;
+				found_it = true;
+				break;
+			}
+		}
+		if (found_it) {
+			// send an email
+			const 	name = data.results[id].Name,
+					username = data.results[id].Username,
+					password = data.results[id].Password;
+			var email_data = {
+				service_id: keys.email.serviceId,
+				template_id: keys.email.templateId.forgotPass,
+				user_id: keys.email.userId,
+				template_params: {
+					'email': email_input.value,
+					// 'name': name,
+					// 'username': username,
+					// 'password': password
+				}
+			};
+			fetch(endpoints.emailapi,{
+				method: 'POST',
+				mode: 'no-cors',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(email_data)
+			})
+			.catch((e) => {
+				showError(popup_error('Could not send to an email, <br>please make sure the email address is correct and available.'))
+			})
+		}
+	})
+	.catch((e) => {
+		showError(popup_error('No internet connection.'));
+		console.error(e);
+	});
+}
