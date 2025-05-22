@@ -108,7 +108,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	padding: 20vw;
-	padding-top: 1.8vw;
+	padding-top: 2.5vw;
 	padding-bottom: 1vw;
 	text-align: center;
 	z-index: 5;
@@ -116,7 +116,7 @@ a {
 
 .buttons {
 	display: flex;
-	padding: 1.8vw;
+	padding: 1.5vw;
 	padding-top: 3vw;
 	justify-content: flex-start;
 	position: fixed;

@@ -25,6 +25,7 @@ input, select {
   justify-content: space-between;
   align-items: center;
   border-bottom: solid white 0.07vw;
+  filter: drop-shadow(2vw 2vw 2vw 2vw black);
 }
 
 .taskbar .profilecontainer {
@@ -173,8 +174,9 @@ input, select {
   background: black;
   z-index: 10;
   color: white;
-  padding: 4vw 2vw;
+  padding: 3vw 2vw;
   flex-direction: column;
+  border-left: solid gray 0.07vw;
 }
 
 .user-menu-header {
@@ -199,7 +201,7 @@ input, select {
 }
 
 .user-menu-header img {
-  width: 10%;
+  width: 15%;
   border-radius: 25vw;
 }
 

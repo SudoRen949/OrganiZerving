@@ -1019,7 +1019,7 @@ function dashboard_menubutton() { // showmenu
 	}
 }
 
-function dashboard_logoutbutton() { // log out
+function dashboard_logoutbutton(addr) { // log out
 	if (window.localStorage.getItem('user_username') === null) return;
 	showMessage(popup_message('Logging out'));
 	// flag as log out
@@ -1032,13 +1032,16 @@ function dashboard_logoutbutton() { // log out
 			'X-Spreadsheet-Id': keys.gsheet,
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({
-			'Flag': 'Logged out'
-		})
+		body: JSON.stringify({ 'Flag': 'Logged out' })
 	})
-	.then((res) => {
+	.then(() => {
 		window.localStorage.clear();
-		window.location.href = '../index.html';
+		if (addr === null) window.location.href = '../index.html';
+		else window.location.href = addr;
+	})
+	.catch((e) => {
+		showError(popup_error('Unable to log you out.<br>Reason: No internet.'));
+		console.error(e);
 	});
 }
 
