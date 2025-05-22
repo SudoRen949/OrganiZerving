@@ -38,20 +38,11 @@ body {
 	padding: 1.5vw;
 }
 
-.div1 button {
-	font-size: 1.5vw;
-	padding: 0.8vw;
-	border: none;
-	border-radius: 0.35vw;
-	background: #63E973;
-	color: black;
-	padding-left: 1.8vw;
-	padding-right: 1.8vw;
-}
-
-.div1 button:hover {
-	background: #45944E;
-	cursor: pointer;
+.div1_1 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background: none;
 }
 
 .div1 h2 {
@@ -114,12 +105,12 @@ body {
 }
 
 .div4_1 img {
-	width: 7vw;
-	height: 7vw;
+	width: 10vw;
+	height: 10vw;
 }
 
 .div4_1 img {
-	border-radius: 0.7vw;
+	border-radius: 0.5vw;
 }
 
 .div4_1 img:hover {
@@ -149,11 +140,11 @@ body {
 .div4_1_5 input, .div4_1_6 input,
 .div4_1_7 input, .div7_1_1 input,
 .div7_1_2 input {
-	background: #FFFFFF;
+	background: #2B2B3A;
 	border: none;
-	border-radius: 0.35vw;
-	height: 2vw;
-	color: #000000;
+	border-radius: 0.5vw;
+	height: 3.5vw;
+	color: white;
 	font-size: 1.35vw;
 	padding-left: 0.7vw;
 }
@@ -184,20 +175,20 @@ body {
 
 .div4_1_4 select, .div4_1_7 select,
 .div4_1_8 select, .div4_1_9 select {
-	background: white;
-	color: black;
-	width: 20.65vw;
-	font-size: 1.5vw;
-	border-radius: 0.35vw;
-	padding-top: 0.1vw;
-	padding-bottom: 0.1vw;
-	padding-left: 0.4vw;
+	background: #2B2B3A;
+	border: none;
+	border-radius: 0.5vw;
+	height: 3.5vw;
+	color: white;
+	font-size: 1.35vw;
+	padding-left: 0.7vw;
+	width: 30vw;
 }
 
 .div4_1_4 option, .div4_1_7 option,
 .div4_1_8 option, .div4_1_9 option {
-	background: white;
-	color: black;
+	background: #2B2B3A;
+	color: white;
 }
 
 .div4_2 {
@@ -332,6 +323,7 @@ body {
 	display: flex;
 	font-size: 1.5vw;
 	align-items: center;
+	align-content: flex-start;
 }
 
 .div7_1_3 {
@@ -380,5 +372,30 @@ body {
 .no-div-button:hover {
 	transition: all 200ms ease-in;
 	background: #45944E;
+	cursor: pointer;
+}
+
+.home-button-div {
+	margin: 1.5vw;
+	margin-left: 3.5vw;
+	display: flex;
+	/* justify-content: center; */
+}
+
+.home-button-div a {
+	font-size: 1.5vw;
+	padding: 1vw;
+	border: solid white 0.07vw;
+	border-radius: 0.5vw;
+	background: #2B2B3A;
+	color: white;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	text-decoration: none;
+}
+
+.home-button-div a:hover {
+	transition: all 200ms ease-in-out;
+	background: rgba(100,100,100,50);
 	cursor: pointer;
 }

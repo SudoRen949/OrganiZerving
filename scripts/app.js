@@ -173,6 +173,16 @@ function lock() {
 }
 
 window.addEventListener('DOMContentLoaded',() => {
+	// disable developer mode for security
+	// document.body.oncontextmenu = (e) => { e.preventDefault(); };
+	// document.body.onkeydown = (e) => {
+	// 	if (e.key == 123) e.preventDefault();
+	// 	if (e.ctrlKey && e.shiftKey && e.key == 'I') e.preventDefault();
+	// 	if (e.ctrlKey && e.shiftKey && e.key == 'C') e.preventDefault();
+	// 	if (e.ctrlKey && e.shiftKey && e.key == 'J') e.preventDefault();
+	// 	if (e.ctrlKey && e.key == 'U') e.preventDefault();
+	// };
+	//
 	const dashboardBody = document.querySelector('#dhbdy');
 	const profileBody = document.querySelector('#pfbdy');
 	const eventBody = document.querySelector('#evtbdy');
@@ -688,24 +698,19 @@ function signup_nextbutton() { // next button
 
 // PROFILE SCRIPT
 
-function profile_home() { // home
-	window.location.href = 'dashboard.html';
-}
-
 function profile_savebutton() { // save changes
 	// window.location.href = window.location.href;
 	const	name = document.getElementById('input1'),
 			age = document.getElementById('input2'),
 			male = document.getElementById('input3'),
-			female = document.getElementById('input4'),
 			status = document.getElementById('select1'),
 			email = document.getElementById('input5'),
 			contact = document.getElementById('input6'),
 			department = document.getElementById('select2');
-	const gender_val = (male.checked) ? 'M' : 'F';
-	const status_val = status.options[status.selectedIndex].value;
-	const department_val = department.options[department.selectedIndex].value;
-	const id = window.localStorage.getItem('user_id');
+	const 	gender_val = (male.checked) ? 'M' : 'F',
+			status_val = status.options[status.selectedIndex].value,
+			department_val = department.options[department.selectedIndex].value,
+			id = window.localStorage.getItem('user_id');
 	const url = endpoints.userdata + '/' + id.toString();
 	// update local storage
 	window.localStorage.setItem('user_name',name.value);
@@ -715,7 +720,7 @@ function profile_savebutton() { // save changes
 	window.localStorage.setItem('user_email',email.value);
 	window.localStorage.setItem('user_contact',contact.value);
 	window.localStorage.setItem('user_dept',department_val);
-	//
+	// save to data
 	fetch(url,{
 		method: 'PUT',
 		headers: {
@@ -739,15 +744,15 @@ function profile_savebutton() { // save changes
 	})
 	.catch((e) => {
 		showError(popup_error('Unable to save changes.<br>No internet connection.'));
-		console.log(e);
+		console.error(e);
 	});
 }
 
 function profile_imagebutton() { // profile pic
 	if (window.localStorage.getItem('user_username') === null) return;
 	//
-	const input = document.createElement('input');
-	const userprofile = document.querySelector('#userprofile');
+	const 	input = document.createElement('input'),
+			userprofile = document.querySelector('#userprofile');
 	input.type = 'file';
 	input.accept = 'image/*';
 	input.addEventListener('change',(event) => {
@@ -761,9 +766,7 @@ function profile_imagebutton() { // profile pic
 			method: 'POST',
 			body: form
 		})
-		.then(res => res.json())
-		.then(data => {
-			// console.log(data);
+		.then(() => {
 			window.localStorage.setItem('user_profile_id',data.public_id);
 			window.localStorage.setItem('user_profile',data.url);
 			userprofile.src = window.localStorage.getItem('user_profile');
@@ -786,12 +789,12 @@ function profile_imagebutton() { // profile pic
 			})
 			.catch((e) => {
 				showError(popup_error('Sorry for inconvenience, the server is down for a while.'));
-				console.log(e);
+				console.error(e);
 			});
 		})
 		.catch((e) => {
 			showError(popup_error('Unable to update profile picture, <br>please try again.'));
-			console.log(e);
+			console.error(e);
 		});
 	});
 	input.click();
