@@ -165,14 +165,16 @@ input, select {
 
 .user-menu-slide {
   position: fixed;
+  display: flex;
   right: 0;
   transform: translateX(100%);
-  width: 35%;
+  width: 30%;
   height: 100%;
   background: black;
   z-index: 10;
   color: white;
   padding: 4vw 2vw;
+  flex-direction: column;
 }
 
 .user-menu-header {
@@ -228,18 +230,24 @@ input, select {
 .user-menu-footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   font-size: 1.5vw;
-  position: absolute;
-  bottom: 0;
+  height: 100%;
+  padding-bottom: 7vw;
 }
 
 .user-menu-logout-btn {
   font-size: 1.5vw;
   border: none;
-  background: rgb(206, 10, 10);
+  background: rgb(200, 10, 10);
   width: 100%;
   padding: 2vw 1vw;
   border-radius: 0.7vw;
+  color: white;
+}
+
+.user-menu-logout-btn:hover {
+  cursor: pointer;
+  background: rgb(150,10,10);
 }

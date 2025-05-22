@@ -217,14 +217,14 @@ body {
 
 .menufooter button {
 	border: none;
-	background: #FF0000;
-	border-radius: 1vw;
-	padding: 1.5vw;
+	background: rgb(200,10,10);
+	border-radius: 0.7vw;
+	padding: 2vw 1vw;
 	font-size: 1.5vw;
 }
 
 .menufooter button:hover {
-	background: #9A0000;
+	background: rgb(150,10,10);
 	cursor: pointer;
 }
 
