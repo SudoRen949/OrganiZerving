@@ -82,21 +82,21 @@
 				<div class="post-event-group-div" id="post-event-group-div">
 					<div class="post-event-group-div-child1">
 						<h3>Post an event</h3>
-						<button class="post-event-close-button" type="button" onclick="dashboard_show_post_event_menu()">Close</button>
+						<button type="button" onclick="dashboard_show_post_event_menu()">&times;</button>
 					</div>
-					<div class="post-event-group-div-child2" style="display: flex; flex-direction: column; gap: 1vw;">
-						<label for="event-name" style="background: none; font-size: 1.5vw;">Title</label>
+					<div class="post-event-group-div-child2">
+						<label for="event-name">Title</label>
 						<input class="event-name" id="event-name" type="text"/>
-						<label for="event-date" style="background: none; font-size: 1.5vw;">Date & time</label>
+						<label for="event-date">Date & time</label>
 						<div style="display: flex; flex-direction: row; gap: 0.7vw;">
 							<input id="event-date" type="date"/>
 							<input id="event-time" type="time"/>
 						</div>
-						<label for="event-cat" style="background: none; font-size: 1.5vw;">Catered to how many students?</label>
+						<label for="event-cat">Catered to how many students?</label>
 						<input id="event-cat" type="text" onkeypress="return numchar(event)" placeholder="Type only number"/>
-						<label for="event-banner" style="background: none; font-size: 1.5vw;">Banner image (must be 624x128 pixels in size)</label>
+						<label for="event-banner">Banner image (must be 624x128 pixels in size)</label>
 						<input class="event-banner" id="event-banner" type="file"/>
-						<label for="event-desc" style="background: none; font-size: 1.5vw;">Description</label>
+						<label for="event-desc">Description</label>
 						<textarea id="event-desc" type="text" placeholder="Enter event description"></textarea>
 						<div class="event-post-div">
 							<button class="event-post-button" onclick="dashboard_submiteventpost()">Post</button>

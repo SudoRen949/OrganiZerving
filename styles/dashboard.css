@@ -243,13 +243,13 @@ body {
 .baloon .mainbtn:hover {
 	transition: all 300ms ease-in-out;
 	transform: scale(1.1);
-	background: rgba(70,70,70,1);
+	background: rgba(70, 70, 70, 0.4);
 	cursor: pointer;
 }
 
 .baloon .mainbtn {
 	border: solid white 0.07vw;
-	border-radius: 7vw;
+	border-radius: 50%;
 	padding: 1.5vw;
 }
 
@@ -282,7 +282,6 @@ body {
 }
 
 .description {
-	/*grid-area: 3 / 1 / span 1 / span 4;*/
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -300,20 +299,20 @@ body {
 	margin-bottom: 2.5vw;
 }
 
-.post-event-close-button {
-	background: #63E973;
+/* Post event dialog */
+
+/* .post-event-close-button {
+	background: none;
 	border: none; 
-	border-radius: 0.7vw;
-	color: black; 
-	padding: 1vw; 
-	padding-left: 2vw;
-	padding-right: 2vw;
-	font-size: 1.5vw;
+	border-radius: 0.07vw;
+	color: white; 
+	padding: 0.5vw 1vw;
+	font-size: 2.5vw;
 }
 
 .post-event-close-button:hover {
 	cursor: pointer;
-	background: #45944E;
+	background: rgb(100,100,100,0.5);
 }
 
 .post-event-main-div {
@@ -353,11 +352,11 @@ body {
 	align-items: center; 
 	background: none;
 	font-size: 1.5vw; 
-	margin-bottom: 1.5vw;
+	margin-bottom: 1vw;
 }
 
 #event-cat {
-	background: white; 
+	background: #2B2B3A; 
 	font-size: 1.5vw; 
 	border: none; 
 	border-radius: 0.07vw; 
@@ -403,7 +402,7 @@ body {
 	background: #63E973;
 	color: black;
 	border: none;
-	border-radius: 0.7vw;
+	border-radius: 0.5vw;
 	padding: 1vw;
 	padding-left: 2vw;
 	padding-right: 2vw;
@@ -418,6 +417,95 @@ body {
 	color: black; 
 	padding-left: 0.7vw; 
 	margin-bottom: 1vw; 
+	padding-top: 0.5vw; 
+	padding-bottom: 0.5vw;
+} */
+
+.post-event-main-div {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	z-index: 10;
+	background: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	backdrop-filter: blur(0.15vw);
+}
+
+.post-event-group-div {
+	position: absolute; 
+	display: flex; 
+	flex-direction: column;
+	background: #1F1F29;
+	z-index: 10; 
+	padding: 3vw; 
+	gap: 1.5vw; 
+	border-radius: 0.7vw;
+	border: solid white 0.07vw; 
+	width: 50vw; 
+	height: 35vw;
+	overflow: scroll;
+}
+
+.post-event-group-div-child1 {
+	display: flex; 
+	justify-content: space-between;
+	align-items: center; 
+	background: none;
+	font-size: 1.5vw; 
+	margin-bottom: 1vw;
+}
+
+.post-event-group-div-child1 button {
+	background: none;
+	border: none; 
+	border-radius: 0.07vw;
+	color: white; 
+	padding: 0.5vw 1vw;
+	font-size: 2.5vw;
+}
+
+.post-event-group-div-child1 button:hover {
+	cursor: pointer;
+	background: rgb(100,100,100,0.5);
+}
+
+.post-event-group-div-child2 {
+	display: flex; 
+	flex-direction: column; 
+	gap: 1vw;
+}
+
+.post-event-group-div-child2 label {
+	font-size: 1.5vw;
+	background: none;
+}
+
+.post-event-group-div-child2 input {
+	background: #2B2B3A; 
+	font-size: 1.5vw; 
+	border: solid gray 0.07vw; 
+	border-radius: 0.07vw; 
+	color: white; 
+	padding-left: 0.7vw; 
+	margin-bottom: 1vw; 
+	padding-top: 1vw; 
+	padding-bottom: 1vw;
+}
+
+.post-event-group-div-child2 #event-date,
+.post-event-group-div-child2 #event-time {
+	font-size: 1.5vw; 
+	border: none; 
+	border-radius: 0.07vw; 
+	padding-left: 0.7vw; 
+	margin-bottom: 1vw; 
+	width: 50%; 
 	padding-top: 0.5vw; 
 	padding-bottom: 0.5vw;
 }
