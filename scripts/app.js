@@ -712,14 +712,8 @@ function profile_savebutton() { // save changes
 			department_val = department.options[department.selectedIndex].value,
 			id = window.localStorage.getItem('user_id');
 	const url = endpoints.userdata + '/' + id.toString();
-	// update local storage
-	window.localStorage.setItem('user_name',name.value);
-	window.localStorage.setItem('user_age',age.value);
-	window.localStorage.setItem('user_gender',gender_val);
-	window.localStorage.setItem('user_status',status_val);
-	window.localStorage.setItem('user_email',email.value);
-	window.localStorage.setItem('user_contact',contact.value);
-	window.localStorage.setItem('user_dept',department_val);
+	// show popup message
+	showMessage(popup_message('Saving changes...'));
 	// save to data
 	fetch(url,{
 		method: 'PUT',
@@ -739,7 +733,18 @@ function profile_savebutton() { // save changes
 		})
 	})
 	.then((res) => {
-		if (res.ok) showMessage(popup_message('Changes saved.'));
+		if (res.ok) {
+			// update local storage
+			window.localStorage.setItem('user_name',name.value);
+			window.localStorage.setItem('user_age',age.value);
+			window.localStorage.setItem('user_gender',gender_val);
+			window.localStorage.setItem('user_status',status_val);
+			window.localStorage.setItem('user_email',email.value);
+			window.localStorage.setItem('user_contact',contact.value);
+			window.localStorage.setItem('user_dept',department_val);
+			// show message
+			showMessage(popup_message('Changes saved.'));
+		}
 		else showError(popup_error('Unable to save changes.'));
 	})
 	.catch((e) => {
